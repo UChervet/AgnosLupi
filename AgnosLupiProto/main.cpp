@@ -7,6 +7,10 @@
 #include <string>
 #include <vector>
 
+/*
+*   Version Git de AgnusLupi
+*   Documentation à faire
+*/
 
 using namespace std;
 
