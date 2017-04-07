@@ -24,7 +24,8 @@ public :
     void removeOrganism(int x, int y);
     Organism * getOrganismAt(int x, int y);
 
-    void oneStepSimu();
+    void getListOrganisms( std::vector <Organism *> &listOrganisms);
+
 
 protected :
     int m_width;

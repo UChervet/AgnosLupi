@@ -70,8 +70,9 @@ int main()
 {
     //INIT
     srand(time(NULL));
-    int tfinal = 6; //time step max
+    int tfinal = 10; //time step max
     Grid2D* world = new Grid2D(15,15);
+    vector <Organism *> listOrganisms;
 
     //creation of the obstacle object
     Organism* obstacle = new Organism(0, 0, world);
@@ -91,61 +92,29 @@ int main()
     toto.setIcon('m');
     world->addOrganism(toto.getX(), toto.getY(), &toto);
 
-    /*Organism jeanjean(8, 13, world);
+    Organism jeanjean(8, 13, world);
     jeanjean.setIcon('n');
     world->addOrganism(jeanjean.getX(), jeanjean.getY(), &jeanjean);
 
     Organism kevin(10, 2, world);
     kevin.setIcon('w');
-    world->addOrganism(kevin.getX(), kevin.getY(), &kevin);*/
+    world->addOrganism(kevin.getX(), kevin.getY(), &kevin);
 
     for(int step = 0; step < tfinal; step ++)
     {
         _sleep(50);
         system("cls");
-        for(int x = 0; x < world->getWidth(); x++)
-        {
-            for(int y = 0; y < world->getHeight(); y++)
-            {
-                if(world->getOrganismAt(x, y) != 0)
-                {
-                    if((world->getOrganismAt(x, y))->getLabel() != "obstacle")
-                    {
-                        if(step%100 == 5)
-                        {
-                            world->getOrganismAt(x, y)->reproduce();
-                        } else {
-                            world->getOrganismAt(x, y)->walk();
-                        }
-                    }
-                }
-            }
-        }
 
-        //if(step%20 == 5)
-        //   toto.reproduce();
+        world->getListOrganisms(listOrganisms);
+        for(int i =0; i < listOrganisms.size(); i++)
+        {
+            listOrganisms[i]->walk();
+        }
 
         world->displayGrid();
         cout<<"Step : "<<step<<endl;
+        cout<<"Organims : "<<listOrganisms.size()<<endl;
     }
-    int nbOrga = 0;
-    for(int x = 0; x < world->getWidth(); x++)
-        {
-            for(int y = 0; y < world->getHeight(); y++)
-            {
-                if(world->getOrganismAt(x, y) != 0)
-                {
-                    if((world->getOrganismAt(x, y))->getLabel() != "obstacle")
-                    {
-                        nbOrga++;
-                    }
-                }
-            }
-        }
-    cout<<"Organims : "<<nbOrga<<endl;
-
-    //world->displayGrid();
-
 
     //destruction des ptrs
     delete obstacle;

@@ -2,6 +2,7 @@
 #include "Organism.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -111,19 +112,21 @@ void Grid2D::displayGrid()
     }
 }
 
-void Grid2D::oneStepSimu()
+void Grid2D::getListOrganisms(std::vector <Organism *> &listOrganisms)
 {
+    listOrganisms.clear();
+
     for(int x = 0; x < m_width; x++)
-    {
-        for(int y = 0; y < m_height; y++)
         {
-            if(getOrganismAt(x, y) != 0)
+            for(int y = 0; y < m_height; y++)
             {
-                if(getOrganismAt(x, y)->getLabel() != "obstacle")
+                if(getOrganismAt(x, y) != 0)
                 {
-                    getOrganismAt(x, y)->walk();
+                    if(getOrganismAt(x, y)->getLabel() != "obstacle")
+                    {
+                        listOrganisms.push_back(getOrganismAt(x, y));
+                    }
                 }
             }
         }
-    }
 }

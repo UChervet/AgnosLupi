@@ -30,6 +30,8 @@ public :
     //action functions
     bool walk();
     bool reproduce();
+    //void eat();
+    //void live();
 
 
 protected:
@@ -37,7 +39,8 @@ protected:
     int m_Y;
     std::string m_label;
     char m_icon;
-    //int livedSteps = 0;
+    int m_livedspan;
+    int m_hunger;
     /*static*/ Grid2D* m_grid; /// TO DO : faudrait passer ça en static
 
 };
