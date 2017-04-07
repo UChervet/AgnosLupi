@@ -70,7 +70,7 @@ int main()
 {
     //INIT
     srand(time(NULL));
-    int tfinal = 10; //time step max
+    int tfinal = 500; //time step max
     Grid2D* world = new Grid2D(15,15);
     vector <Organism *> listOrganisms;
 
@@ -109,6 +109,8 @@ int main()
         for(int i =0; i < listOrganisms.size(); i++)
         {
             listOrganisms[i]->walk();
+            if(step%50 == 25)
+                listOrganisms[i]->reproduce();
         }
 
         world->displayGrid();

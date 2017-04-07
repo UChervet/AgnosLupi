@@ -160,33 +160,66 @@ bool Organism::walk()
 
 bool Organism::reproduce()
 {
+    int direction;
     int x_enfant,y_enfant;
+    bool hasReproduced = false;
     if(hasFreeNeighbour())
     {
-        if(!m_grid->getOrganismAt(m_X+1, m_Y))
+        while(!hasReproduced)
         {
-            x_enfant = m_X+1;
-            y_enfant = m_Y;
-        } else {
-            if(!m_grid->getOrganismAt(m_X-1, m_Y))
+            direction = rand() % 4;
+            switch(direction)
             {
-                x_enfant = m_X-1;
-                y_enfant = m_Y;
-            } else {
-                if(!m_grid->getOrganismAt(m_X, m_Y+1))
+            case 0 : //x++
+                if((m_X + 1) < m_grid->getWidth())
                 {
-                    x_enfant = m_X;
-                    y_enfant = m_Y+1;
-                } else {
-                    if(!m_grid->getOrganismAt(m_X, m_Y-1))
+                    if (!m_grid->getOrganismAt(m_X+1, m_Y))
+                    {
+                        x_enfant = m_X+1;
+                        y_enfant = m_Y;
+                        hasReproduced = true;
+                    }
+
+                }
+                break;
+            case 1 : //y ++
+                if((m_Y + 1) < m_grid->getHeight())
+                {
+                    if(!m_grid->getOrganismAt(m_X, m_Y+1) )
+                    {
+                        x_enfant = m_X;
+                        y_enfant = m_Y+1;
+                        hasReproduced = true;
+                    }
+                }
+                break;
+            case 2 : //x--
+                if(m_X > 0)
+                {
+                    if(!m_grid->getOrganismAt(m_X-1, m_Y))
+                    {
+                        x_enfant = m_X-1;
+                        y_enfant = m_Y;
+                        hasReproduced = true;
+                    }
+                }
+                break;
+            case 3: //y--
+                if(m_Y > 0)
+                {
+                    if( !m_grid->getOrganismAt(m_X, m_Y-1))
                     {
                         x_enfant = m_X;
                         y_enfant = m_Y-1;
+                        hasReproduced = true;
                     }
                 }
+                break;
             }
         }
         Organism* enfant = new Organism(x_enfant, y_enfant, m_grid);
+        enfant->setLabel(m_label);
+        enfant->setIcon(m_icon);
         m_grid->addOrganism(enfant->getX(), enfant->getY(), enfant);
     }
 
