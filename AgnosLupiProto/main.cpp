@@ -69,7 +69,7 @@ void pbDaf()
 int main()
 {
     //INIT
-    srand(time(NULL));
+    srand(time(NULL)); // initialisation de rand
     int tfinal = 500; //time step max
     Grid2D* world = new Grid2D(15,15);
     vector <Organism *> listOrganisms;
@@ -102,7 +102,7 @@ int main()
 
     for(int step = 0; step < tfinal; step ++)
     {
-        _sleep(50);
+        _sleep(40);
         system("cls");
 
         world->getListOrganisms(listOrganisms);
@@ -110,7 +110,13 @@ int main()
         {
             listOrganisms[i]->walk();
             if(step%50 == 25)
+            {
                 listOrganisms[i]->reproduce();
+                if (rand() % 100 < 20)
+                {
+                    listOrganisms[i]->die();
+                }
+            }
         }
 
         world->displayGrid();

@@ -225,3 +225,9 @@ bool Organism::reproduce()
 
     return hasFreeNeighbour();
 }
+
+void Organism::die() {
+    m_grid->removeOrganism(m_X, m_Y);
+}
+
+

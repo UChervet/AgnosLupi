@@ -32,6 +32,7 @@ public :
     bool reproduce();
     //void eat();
     //void live();
+    void die();
 
 
 protected:

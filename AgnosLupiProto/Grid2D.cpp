@@ -37,18 +37,6 @@ int Grid2D::getHeight()
     return m_height;
 }
 
-
-///TODO à fixer
-/*std::vector<Organism*> Grid2D::getListOrganisms(){
-    std::vector<Organism*> listOrganisms;
-    for(int i = 0; i < (m_width*m_height -1); i++)
-    {
-        if(m_organisms[i]->getLabel() != "obstacle")
-            listOrganisms.push_back(m_organisms[i]);
-    }
-    return listOrganisms;
-}*/
-
 void Grid2D::setBorders(Organism * obstacle)
 {
     addRectangleObst(obstacle, 0, 0, m_width-1, m_height-1);
