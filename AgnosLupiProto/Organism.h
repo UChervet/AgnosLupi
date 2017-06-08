@@ -24,7 +24,7 @@ public :
     int getY();
     void setPosition(int x, int y);
     bool hasFreeNeighbour();
-    int countNeighbour(bool countDiag);
+    int countNeighbour(bool countDiag = false);
     std::string getLabel();
     void setLabel(std::string label);
     char getIcon();

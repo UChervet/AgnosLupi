@@ -2,6 +2,7 @@
 #include "Grid2D.h"
 #include <stdlib.h>
 #include <iostream>
+#include <stdio.h>
 
 using namespace std;
 
@@ -29,17 +30,46 @@ void GameOlife::createGermeAlea()
 
 void GameOlife::init()
 {
-    this->createGermeAlea();
+
     m_border = new Organism(0, 0, m_grid);
     m_border->setLabel("obstacle");
     m_border->setIcon('@');
     m_grid->setBorders(m_border);
+
+    this->createGermeAlea();
+}
+
+void GameOlife::addCreationRule(int a)
+{
+    m_creationRule.push_back(a);
+}
+
+void GameOlife::addSurvieRule(int a)
+{
+    m_survieRule.push_back(a);
+}
+
+
+void GameOlife::setCreationRule(int mask)
+{
+    ///TODO
+    //000000000
+
+    //if(mask && 000000001 >> decalé comme il faut) then addCreationRule
+}
+
+void GameOlife::setSurvieRule(int mask)
+{
+    ///TODO
 }
 
 void GameOlife::displaySimu()
 {
     m_grid->displayGrid();
 }
+
+
+
 
 void GameOlife::runOneStep()
 {
@@ -49,22 +79,29 @@ void GameOlife::runOneStep()
     {
         for(int j = 1; j < m_hGrid-1; j++)
         {
-            if(m_grid->countNeighboor(i,j,true) == 2)  //utiliser des conversions binaire et un masque pour la suite
+            //survie
+            for(int indexS = 0; indexS < m_survieRule.size(); indexS++)
             {
-                if(m_grid->getOrganismAt(i, j))
-                    newListOrganisms.push_back(Organism(i,j,m_grid, 'X'));
+                if(m_grid->countNeighboor(i,j,true) == m_survieRule[indexS])  //utiliser des conversions binaire et un masque pour la suite
+                {
+                    if(m_grid->getOrganismAt(i, j))
+                        newListOrganisms.push_back(Organism(i,j,m_grid, 'X'));
+                }
             }
-            if(m_grid->countNeighboor(i,j,true) == 3)  //utiliser des conversions binaire et un masque pour la suite
+            //reproduction
+            for(int indexR = 0; indexR < m_creationRule.size(); indexR++)
             {
-                if(!m_grid->getOrganismAt(i, j))
-                    newListOrganisms.push_back(Organism(i,j,m_grid, 'X'));
+                if(m_grid->countNeighboor(i,j,true) == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
+                {
+                        newListOrganisms.push_back(Organism(i,j,m_grid, 'X'));
+                }
             }
         }
     }
 
     for(int i = 0; i < m_listOrganisms.size(); i++)
     {
-        m_grid->supprOrganism(m_listOrganisms[i].getX(), m_listOrganisms[i].getY());
+        m_grid->removeOrganism(m_listOrganisms[i].getX(), m_listOrganisms[i].getY());
     }
 
     m_listOrganisms = newListOrganisms;
@@ -74,14 +111,21 @@ void GameOlife::runOneStep()
     }
 }
 
-void GameOlife::runSimu()
+void GameOlife::runSimu(bool stepByStep)
 {
     for(int i = 0; i < m_nbStemSimu; i++)
     {
         this->runOneStep();
-        _sleep(80);
+        if(stepByStep)
+        {
+            char tempo;
+            scanf("%c",&tempo);
+        } else {
+            _sleep(80);
+        }
         system("cls");
         this->displaySimu();
         cout<<"Step simulation : " << i << endl;
+
     }
 }

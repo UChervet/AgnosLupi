@@ -74,16 +74,40 @@ int main()
     srand(time(NULL)); // initialisation de rand
     int h = 50;
     int w = 50;
-    int tauxGerme = 10;
+    int tauxGerme = 20;
     int nbStep = 10000;
 
     GameOlife* simulation = new GameOlife(h, w, tauxGerme, nbStep);
     simulation->init();
+//    //jeu de la vie
+//    simulation->addSurvieRule(2);
+//    simulation->addSurvieRule(3);
+//    simulation->addCreationRule(3);
+
+    //Highlife
+    simulation->addSurvieRule(2);
+    simulation->addSurvieRule(3);
+    simulation->addCreationRule(3);
+    simulation->addCreationRule(6);
+
+    //Eponge
+//    simulation->addSurvieRule(0);
+//    simulation->addSurvieRule(1);
+//    simulation->addSurvieRule(2);
+//    simulation->addSurvieRule(3);
+//    simulation->addSurvieRule(4);
+//    simulation->addSurvieRule(5);
+//    simulation->addSurvieRule(6);
+//    simulation->addSurvieRule(7);
+//
+//    simulation->addCreationRule(4);
+//    simulation->addCreationRule(5);
+//    simulation->addCreationRule(6);
+//    simulation->addCreationRule(7);
 
     simulation->displaySimu();
     char tempo;
-    //scanf("%c",&tempo);
-
+    scanf("%c",&tempo);
     simulation->runSimu();
 
     return 0;

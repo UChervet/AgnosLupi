@@ -73,14 +73,14 @@
 	<stdlib.h>
 	<vector>
 
-1496928791 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.h
+1496932311 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.h
 	"Organism.h"
 	<vector>
 
-1496929257 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.h
+1496932159 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.h
 	<string>
 
-1496930853 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
+1496934220 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
 	<iostream>
 	<cstdlib>
 	<stdlib.h>
@@ -99,14 +99,15 @@
 	<stdio.h>
 	<stdlib.h>
 
-1496930389 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.h
+1496934606 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.h
 	"Organism.h"
 	"Grid2D.h"
 	<vector>
 
-1496930929 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.cpp
+1496934715 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.cpp
 	"GameOlife.h"
 	"Grid2D.h"
 	<stdlib.h>
 	<iostream>
+	<stdio.h>
 

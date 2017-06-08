@@ -23,7 +23,7 @@ public :
     void addOrganism(Organism * organism);
     void supprOrganism(int x, int y);
     void removeOrganism(int x, int y);
-    int countNeighboor(int x, int y, bool countDiag);
+    int countNeighboor(int x, int y, bool countDiag = false);
     Organism * getOrganismAt(int x, int y);
 
     void getListOrganisms( std::vector <Organism *> &listOrganisms);

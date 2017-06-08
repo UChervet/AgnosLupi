@@ -14,13 +14,19 @@ public :
     void init();
     void displaySimu();
     void runOneStep();
-    void runSimu();
+    void runSimu(bool stepByStep = false);
+    void addSurvieRule(int a);
+    void addCreationRule(int a);
+    void setSurvieRule(int mask);
+    void setCreationRule(int mask);
 
 
 protected :
     int m_wGrid, m_hGrid; //dimension grille de simulation
     int m_tauxGerme;
     int m_nbStemSimu;
+    std::vector <int>  m_survieRule;
+    std::vector <int>  m_creationRule;
     Grid2D * m_grid;
     Organism* m_border;
     std::vector <Organism> m_listOrganisms;
