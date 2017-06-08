@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="GameOlife.cpp" />
+		<Unit filename="GameOlife.h" />
 		<Unit filename="Grid2D.cpp" />
 		<Unit filename="Grid2D.h" />
 		<Unit filename="Organism.cpp" />

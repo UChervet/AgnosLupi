@@ -1,7 +1,9 @@
 #include "Grid2D.h"
 #include "Organism.h"
 #include <iostream>
-#include <string>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <vector>
 
 using namespace std;
@@ -68,6 +70,11 @@ void Grid2D::addOrganism(int x, int y, Organism * organism)
     m_organisms [ m_height * x + y ] = organism;
 }
 
+void Grid2D::addOrganism(Organism * organism)
+{
+    m_organisms [ m_height * organism->getX() + organism->getY() ] = organism;
+}
+
 void Grid2D::removeOrganism(int x, int y)
 {
     m_organisms [ m_height * x + y ] = 0;
@@ -98,6 +105,60 @@ void Grid2D::displayGrid()
         }
         cout<<endl;
     }
+}
+
+int Grid2D::countNeighboor(int x, int y, bool countDiag)
+{
+
+    int nbNeighb = 0;
+
+    if(this->getOrganismAt(x+1, y))
+    {
+        if(strcmp((this->getOrganismAt(x+1, y)->getLabel()).c_str(), "obstacle") != 0 )
+            nbNeighb++;
+    }
+    if(this->getOrganismAt(x-1, y))
+    {
+        if(strcmp((this->getOrganismAt(x-1, y)->getLabel()).c_str(), "obstacle") != 0 )
+            nbNeighb++;
+    }
+    if(this->getOrganismAt(x, y+1))
+    {
+        if(strcmp((this->getOrganismAt(x, y+1)->getLabel()).c_str(), "obstacle") != 0 )
+            nbNeighb++;
+    }
+    if(this->getOrganismAt(x, y-1))
+    {
+        if(strcmp((this->getOrganismAt(x, y-1)->getLabel()).c_str(), "obstacle") != 0 )
+            nbNeighb++;
+    }
+
+    if(countDiag)
+    {
+        if(this->getOrganismAt(x+1, y+1))
+        {
+            if(strcmp((this->getOrganismAt(x+1, y+1)->getLabel()).c_str(), "obstacle") != 0 )
+                nbNeighb++;
+        }
+        if(this->getOrganismAt(x-1, y-1))
+        {
+            if(strcmp((this->getOrganismAt(x-1, y-1)->getLabel()).c_str(), "obstacle") != 0 )
+                nbNeighb++;
+        }
+        if(this->getOrganismAt(x-1, y+1))
+        {
+            if(strcmp((this->getOrganismAt(x-1, y+1)->getLabel()).c_str(), "obstacle") != 0 )
+                nbNeighb++;
+        }
+        if(this->getOrganismAt(x+1, y-1))
+        {
+            if(strcmp((this->getOrganismAt(x+1, y-1)->getLabel()).c_str(), "obstacle") != 0 )
+                nbNeighb++;
+        }
+    }
+
+    return nbNeighb;
+
 }
 
 void Grid2D::getListOrganisms(std::vector <Organism *> &listOrganisms)

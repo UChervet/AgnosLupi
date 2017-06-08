@@ -3,9 +3,11 @@
 #include <stdlib.h>
 #include "Grid2D.h"
 #include "Organism.h"
+#include "GameOlife.h"
 #include <time.h>
 #include <string>
 #include <vector>
+#include <stdio.h>
 
 /*
 *   Version Git de AgnusLupi
@@ -66,11 +68,33 @@ void pbDaf()
 }
 
 
+
 int main()
 {
-    //INIT
     srand(time(NULL)); // initialisation de rand
-    int tfinal = 10; //time step max
+    int h = 50;
+    int w = 50;
+    int tauxGerme = 10;
+    int nbStep = 10000;
+
+    GameOlife* simulation = new GameOlife(h, w, tauxGerme, nbStep);
+    simulation->init();
+
+    simulation->displaySimu();
+    char tempo;
+    //scanf("%c",&tempo);
+
+    simulation->runSimu();
+
+    return 0;
+}
+
+
+
+
+/*//    //INIT
+    srand(time(NULL)); // initialisation de rand
+    int tfinal = 1000; //time step max
     Grid2D* world = new Grid2D(40,30);
     vector <Organism *> listOrganisms;
 
@@ -84,14 +108,26 @@ int main()
     Organism toto(world);
     toto.setIcon('m');
     world->addOrganism(toto.getX(), toto.getY(), &toto);
+    Organism ereer(world);
+    ereer.setIcon('m');
+    world->addOrganism(ereer.getX(), ereer.getY(), &ereer);
+    Organism fqsfqs(world);
+    fqsfqs.setIcon('m');
+    world->addOrganism(fqsfqs.getX(), fqsfqs.getY(), &fqsfqs);
+    Organism sdfsd(world);
+    sdfsd.setIcon('m');
+    world->addOrganism(sdfsd.getX(), sdfsd.getY(), &sdfsd);
+    Organism arerer(world);
+    arerer.setIcon('m');
+    world->addOrganism(arerer.getX(), arerer.getY(), &arerer);
 
-//    Organism jeanjean(3, 13, world);
-//    jeanjean.setIcon('n');
-//    world->addOrganism(jeanjean.getX(), jeanjean.getY(), &jeanjean);
-//
-//    Organism kevin(3, 2, world);
-//    kevin.setIcon('w');
-//    world->addOrganism(kevin.getX(), kevin.getY(), &kevin);
+    Organism jeanjean(world);
+    jeanjean.setIcon('n');
+    world->addOrganism(jeanjean.getX(), jeanjean.getY(), &jeanjean);
+
+    Organism kevin(world);
+    kevin.setIcon('w');
+    world->addOrganism(kevin.getX(), kevin.getY(), &kevin);
 
 
     for(int step = 0; step < tfinal; step ++)
@@ -103,14 +139,16 @@ int main()
         for(int i =0; i < listOrganisms.size(); i++)
         {
             listOrganisms[i]->walk();
-            if(step%50 == 25)
-            {
-                listOrganisms[i]->reproduce();
-                if (rand() % 100 < 20)
+            //if(step%50 == 25)
+            //{
+                if (rand() % 1000 < 15)
+                    listOrganisms[i]->reproduce();
+
+                if (rand() % 1000 < 10)
                 {
                     listOrganisms[i]->die();
                 }
-            }
+            //}
         }
 
 
@@ -118,45 +156,6 @@ int main()
         cout<<"Organims : "<<listOrganisms.size()<<endl;
         world->displayGrid();
     }
-
-    //destruction des ptrs
-    delete obstacle;
-    obstacle = 0;
-    delete world;
-    world = 0;
-    return 0;
-}
-
-
-
-
-/*//INIT
-    srand(time(NULL));
-    int tfinal = 500; //time step max
-    Grid2D* world = new Grid2D(15,15);
-
-    //creation of the obstacle object
-	Organism* obstacle = new Organism(0, 0, world);
-	obstacle->setLabel("obstacle");
-	world->setBorders(obstacle);
-
-    //creation et placement organisms
-    Organism toto(7, 7, world);
-    world->addOrganism(toto.getX(), toto.getY(), &toto);
-    //Organism jeanjean(11, 11, world);
-    //world->addOrganism(jeanjean.getX(), jeanjean.getY(), &jeanjean);
-    //world->displayGrid();
-    for(int step = 0; step < tfinal;step ++)
-    {
-        _sleep(50);
-        system("cls");
-        //jeanjean.walk();
-        toto.walk();
-        world->displayGrid();
-    }
-
-    //world->displayGrid();
-
 
     //destruction des ptrs
     delete obstacle;

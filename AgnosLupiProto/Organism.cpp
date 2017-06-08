@@ -1,7 +1,8 @@
 #include "Organism.h"
 #include "Grid2D.h"
+#include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <string>
 
 using namespace std;
 
@@ -19,11 +20,15 @@ Organism::Organism(int x, int y, Grid2D * grid) : m_X(x), m_Y(y), m_grid(grid)
     m_icon = '¿'; //default unknown icon
 }
 
+Organism::Organism(int x, int y, Grid2D * grid, char ic) : m_X(x), m_Y(y), m_grid(grid), m_icon(ic)
+{
+    m_label = "unlabelled"; //default unknown label
+}
+
 //placement aléatoire
-Organism::Organism(Grid2D * grid) : m_grid(grid)
+Organism::Organism(Grid2D * grid, char ic) : m_grid(grid), m_icon(ic)
 {
     bool isPlaced = false;
-    int xalea=0,yalea=0;
     while(!isPlaced)
     {
         m_X = rand() %  m_grid->getWidth();
@@ -34,7 +39,7 @@ Organism::Organism(Grid2D * grid) : m_grid(grid)
         }
     }
     m_label = "unlabelled"; //default unknown label
-    m_icon = '¿';  //default unknown icon
+    //m_icon = '¿'; //default unknown icon
 }
 
 int Organism::getX()
@@ -95,6 +100,58 @@ bool Organism::hasFreeNeighbour()
         isFree = true;
 
     return isFree;
+}
+
+int Organism::countNeighbour(bool countDiag)
+{
+    int nbNeighb = 0;
+
+    if(m_grid->getOrganismAt(m_X+1, m_Y))
+    {
+        if(strcmp((m_grid->getOrganismAt(m_X+1, m_Y)->getLabel()).c_str(), "obstacle") != 0 )
+            nbNeighb++;
+    }
+    if(m_grid->getOrganismAt(m_X-1, m_Y))
+    {
+        if(strcmp((m_grid->getOrganismAt(m_X-1, m_Y)->getLabel()).c_str(), "obstacle") != 0 )
+            nbNeighb++;
+    }
+    if(m_grid->getOrganismAt(m_X, m_Y+1))
+    {
+        if(strcmp((m_grid->getOrganismAt(m_X, m_Y+1)->getLabel()).c_str(), "obstacle") != 0 )
+            nbNeighb++;
+    }
+    if(m_grid->getOrganismAt(m_X, m_Y-1))
+    {
+        if(strcmp((m_grid->getOrganismAt(m_X, m_Y-1)->getLabel()).c_str(), "obstacle") != 0 )
+            nbNeighb++;
+    }
+
+    if(countDiag)
+    {
+        if(m_grid->getOrganismAt(m_X+1, m_Y+1))
+        {
+            if(strcmp((m_grid->getOrganismAt(m_X+1, m_Y+1)->getLabel()).c_str(), "obstacle") != 0 )
+                nbNeighb++;
+        }
+        if(m_grid->getOrganismAt(m_X-1, m_Y-1))
+        {
+            if(strcmp((m_grid->getOrganismAt(m_X-1, m_Y-1)->getLabel()).c_str(), "obstacle") != 0 )
+                nbNeighb++;
+        }
+        if(m_grid->getOrganismAt(m_X-1, m_Y+1))
+        {
+            if(strcmp((m_grid->getOrganismAt(m_X-1, m_Y+1)->getLabel()).c_str(), "obstacle") != 0 )
+                nbNeighb++;
+        }
+        if(m_grid->getOrganismAt(m_X+1, m_Y-1))
+        {
+            if(strcmp((m_grid->getOrganismAt(m_X+1, m_Y-1)->getLabel()).c_str(), "obstacle") != 0 )
+                nbNeighb++;
+        }
+    }
+
+    return nbNeighb;
 }
 
 /*
@@ -244,7 +301,8 @@ bool Organism::reproduce()
     return hasFreeNeighbour();
 }
 
-void Organism::die() {
+void Organism::die()
+{
     m_grid->removeOrganism(m_X, m_Y);
 }
 

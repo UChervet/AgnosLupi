@@ -20,8 +20,10 @@ public :
     void displayGrid();
     void addRectangleObst(Organism * obstacle, int x1, int y1, int x2, int y2);
     void addOrganism(int x, int y, Organism * organism);
+    void addOrganism(Organism * organism);
     void supprOrganism(int x, int y);
     void removeOrganism(int x, int y);
+    int countNeighboor(int x, int y, bool countDiag);
     Organism * getOrganismAt(int x, int y);
 
     void getListOrganisms( std::vector <Organism *> &listOrganisms);

@@ -12,7 +12,8 @@ public :
     //constructors
     Organism(int x, int y);
     Organism(int x, int y, Grid2D * grid);
-    Organism(Grid2D * grid); //random starting x and y
+    Organism(int x, int y, Grid2D * grid, char icon);
+    Organism(Grid2D * grid, char icon); //random starting x and y
 
     //init functions
     /*static*/ void setGrid(Grid2D * grid); /// TO DO :faudrait passer ça en static
@@ -23,6 +24,7 @@ public :
     int getY();
     void setPosition(int x, int y);
     bool hasFreeNeighbour();
+    int countNeighbour(bool countDiag);
     std::string getLabel();
     void setLabel(std::string label);
     char getIcon();
