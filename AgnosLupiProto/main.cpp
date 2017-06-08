@@ -71,7 +71,7 @@ int main()
     //INIT
     srand(time(NULL)); // initialisation de rand
     int tfinal = 500; //time step max
-    Grid2D* world = new Grid2D(15,15);
+    Grid2D* world = new Grid2D(40,30);
     vector <Organism *> listOrganisms;
 
     //creation of the obstacle object
@@ -79,29 +79,24 @@ int main()
     obstacle->setLabel("obstacle");
     obstacle->setIcon('@');
     world->setBorders(obstacle);
-    /*world->addRectangleObst(obstacle,2,2,4,8);
-    world->addRectangleObst(obstacle,2,10,4,12);
-    world->addRectangleObst(obstacle,6,2,8,4);
-    world->addRectangleObst(obstacle,6,6,8,12);
-    world->addRectangleObst(obstacle,12,6,12,12);
-    world->addRectangleObst(obstacle,10,10,12,10);
-    world->addRectangleObst(obstacle,10,4,14,4);*/
 
     //creation et placement organisms
     Organism toto(3,10, world);
     toto.setIcon('m');
     world->addOrganism(toto.getX(), toto.getY(), &toto);
 
-    Organism jeanjean(8, 13, world);
+    Organism jeanjean(3, 13, world);
     jeanjean.setIcon('n');
     world->addOrganism(jeanjean.getX(), jeanjean.getY(), &jeanjean);
 
-    Organism kevin(10, 2, world);
+    Organism kevin(3, 2, world);
     kevin.setIcon('w');
     world->addOrganism(kevin.getX(), kevin.getY(), &kevin);
 
+
     for(int step = 0; step < tfinal; step ++)
     {
+        world->displayGrid();
         _sleep(40);
         system("cls");
 
@@ -119,7 +114,7 @@ int main()
             }
         }
 
-        world->displayGrid();
+
         cout<<"Step : "<<step<<endl;
         cout<<"Organims : "<<listOrganisms.size()<<endl;
     }

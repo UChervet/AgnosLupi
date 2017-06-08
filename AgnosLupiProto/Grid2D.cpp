@@ -13,7 +13,7 @@ Grid2D::Grid2D(int w, int h): m_width(w), m_height(h)
     m_organisms = new Organism* [m_width * m_height];
 
 
-    for (int i = 0; i < m_width  * m_height; i++)
+    for (int i = 0; i < (m_width * m_height); i++)
     {
         m_organisms[i] = 0; // no organism there yet so points to 0.
     }
@@ -60,23 +60,23 @@ void Grid2D::addRectangleObst(Organism * obstacle, int x1, int y1, int x2, int y
 // 2-D coordinates to look in 1-D array
 Organism* Grid2D::getOrganismAt( int x, int y)
 {
-    return m_organisms [ m_width * x + y ];
+    return m_organisms [ m_height * x + y ];
 }
 
 void Grid2D::addOrganism(int x, int y, Organism * organism)
 {
-    m_organisms [ m_width * x + y ] = organism;
+    m_organisms [ m_height * x + y ] = organism;
 }
 
 void Grid2D::removeOrganism(int x, int y)
 {
-    m_organisms [ m_width * x + y ] = 0;
+    m_organisms [ m_height * x + y ] = 0;
 }
 
 void Grid2D::supprOrganism(int x, int y)
 {
-    delete m_organisms [ m_width * x + y ];
-    m_organisms [ m_width * x + y ] = 0;
+    delete m_organisms [ m_height * x + y ];
+    m_organisms [ m_height * x + y ] = 0;
 }
 
 void Grid2D::displayGrid()

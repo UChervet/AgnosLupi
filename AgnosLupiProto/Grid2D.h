@@ -28,8 +28,8 @@ public :
 
 
 protected :
-    int m_width;
-    int m_height;
+    int m_width; //coord en x
+    int m_height; //coord en y
     // This is a pointer to pointer to Organism. I will use it as
 	// 1-D array of pointers to Organism, and not 2D array.
 	// I used pointers to Organisms rather that char, because
