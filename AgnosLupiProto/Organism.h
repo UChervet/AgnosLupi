@@ -12,6 +12,7 @@ public :
     //constructors
     Organism(int x, int y);
     Organism(int x, int y, Grid2D * grid);
+    Organism(Grid2D * grid); //random starting x and y
 
     //init functions
     /*static*/ void setGrid(Grid2D * grid); /// TO DO :faudrait passer ça en static

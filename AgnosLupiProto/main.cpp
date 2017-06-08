@@ -70,7 +70,7 @@ int main()
 {
     //INIT
     srand(time(NULL)); // initialisation de rand
-    int tfinal = 500; //time step max
+    int tfinal = 10; //time step max
     Grid2D* world = new Grid2D(40,30);
     vector <Organism *> listOrganisms;
 
@@ -81,22 +81,21 @@ int main()
     world->setBorders(obstacle);
 
     //creation et placement organisms
-    Organism toto(3,10, world);
+    Organism toto(world);
     toto.setIcon('m');
     world->addOrganism(toto.getX(), toto.getY(), &toto);
 
-    Organism jeanjean(3, 13, world);
-    jeanjean.setIcon('n');
-    world->addOrganism(jeanjean.getX(), jeanjean.getY(), &jeanjean);
-
-    Organism kevin(3, 2, world);
-    kevin.setIcon('w');
-    world->addOrganism(kevin.getX(), kevin.getY(), &kevin);
+//    Organism jeanjean(3, 13, world);
+//    jeanjean.setIcon('n');
+//    world->addOrganism(jeanjean.getX(), jeanjean.getY(), &jeanjean);
+//
+//    Organism kevin(3, 2, world);
+//    kevin.setIcon('w');
+//    world->addOrganism(kevin.getX(), kevin.getY(), &kevin);
 
 
     for(int step = 0; step < tfinal; step ++)
     {
-        world->displayGrid();
         _sleep(40);
         system("cls");
 
@@ -117,6 +116,7 @@ int main()
 
         cout<<"Step : "<<step<<endl;
         cout<<"Organims : "<<listOrganisms.size()<<endl;
+        world->displayGrid();
     }
 
     //destruction des ptrs

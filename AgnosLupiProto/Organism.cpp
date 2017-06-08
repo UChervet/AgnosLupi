@@ -19,6 +19,24 @@ Organism::Organism(int x, int y, Grid2D * grid) : m_X(x), m_Y(y), m_grid(grid)
     m_icon = '¿'; //default unknown icon
 }
 
+//placement aléatoire
+Organism::Organism(Grid2D * grid) : m_grid(grid)
+{
+    bool isPlaced = false;
+    int xalea=0,yalea=0;
+    while(!isPlaced)
+    {
+        m_X = rand() %  m_grid->getWidth();
+        m_Y = rand() %  m_grid->getHeight();
+        if( !m_grid->getOrganismAt(m_X, m_Y))
+        {
+            isPlaced = true;
+        }
+    }
+    m_label = "unlabelled"; //default unknown label
+    m_icon = '¿';  //default unknown icon
+}
+
 int Organism::getX()
 {
     return m_X;
