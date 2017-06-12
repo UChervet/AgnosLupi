@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
+#include <string.h>
+#include <sstream>
 
 using namespace std;
 
@@ -50,17 +52,44 @@ void GameOlife::addSurvieRule(int a)
 }
 
 
-void GameOlife::setCreationRule(int mask)
+void GameOlife::setCreationRules(string mask)
 {
-    ///TODO
-    //000000000
+    stringstream ss;
+    string s2;
 
-    //if(mask && 000000001 >> decalé comme il faut) then addCreationRule
+    for(int i = 0; i < 9; i++)
+    {
+        ss.str(string());
+        ss.clear();
+        s2 = "";
+        ss << i;
+        s2 = ss.str();
+        size_t found = mask.find(s2);
+        if(found != string::npos) //en fait faut test différement le find
+        {
+            m_creationRule.push_back(i);
+        }
+    }
 }
 
-void GameOlife::setSurvieRule(int mask)
+void GameOlife::setSurvieRules(string mask)
 {
-    ///TODO
+    stringstream ss;
+    string s2;
+
+    for(int i = 0; i < 9; i++)
+    {
+        ss.str(string());
+        ss.clear();
+        s2 = "";
+        ss << i;
+        s2 = ss.str();
+        size_t found = mask.find(s2);
+        if(found != string::npos)          //en fait faut test différement le find
+        {
+            m_survieRule.push_back(i);
+        }
+    }
 }
 
 void GameOlife::displaySimu()
@@ -121,6 +150,7 @@ void GameOlife::runSimu(bool stepByStep)
             char tempo;
             scanf("%c",&tempo);
         } else {
+            //_sleep(80); //si suit recommandation pas c++11 version
             _sleep(80);
         }
         system("cls");

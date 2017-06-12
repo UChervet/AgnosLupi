@@ -80,30 +80,25 @@ int main()
     GameOlife* simulation = new GameOlife(h, w, tauxGerme, nbStep);
     simulation->init();
 //    //jeu de la vie
-//    simulation->addSurvieRule(2);
-//    simulation->addSurvieRule(3);
-//    simulation->addCreationRule(3);
+//    simulation->setSurvieRules("23");
+//    simulation->setCreationRules("3");
 
-    //Highlife
-    simulation->addSurvieRule(2);
-    simulation->addSurvieRule(3);
-    simulation->addCreationRule(3);
-    simulation->addCreationRule(6);
+    //highlife
+//    simulation->setSurvieRules("23");
+//    simulation->setCreationRules("36");
 
-    //Eponge
-//    simulation->addSurvieRule(0);
-//    simulation->addSurvieRule(1);
-//    simulation->addSurvieRule(2);
-//    simulation->addSurvieRule(3);
-//    simulation->addSurvieRule(4);
-//    simulation->addSurvieRule(5);
-//    simulation->addSurvieRule(6);
-//    simulation->addSurvieRule(7);
-//
-//    simulation->addCreationRule(4);
-//    simulation->addCreationRule(5);
-//    simulation->addCreationRule(6);
-//    simulation->addCreationRule(7);
+    //diamoeba
+    simulation->setSurvieRules("5678");
+    simulation->setCreationRules("35678");
+
+    //amoeba
+//    simulation->setSurvieRules("1358");
+//    simulation->setCreationRules("357");
+
+    //labyrinth
+//    simulation->setSurvieRules("12345");
+//    simulation->setCreationRules("3");
+
 
     simulation->displaySimu();
     char tempo;

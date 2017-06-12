@@ -4,6 +4,7 @@
 #include "Organism.h"
 #include "Grid2D.h"
 #include <vector>
+#include <string.h>
 
 class GameOlife
 {
@@ -17,8 +18,8 @@ public :
     void runSimu(bool stepByStep = false);
     void addSurvieRule(int a);
     void addCreationRule(int a);
-    void setSurvieRule(int mask);
-    void setCreationRule(int mask);
+    void setSurvieRules(std::string mask);
+    void setCreationRules(std::string mask);
 
 
 protected :
