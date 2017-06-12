@@ -12,11 +12,14 @@ public :
     GameOlife();
     GameOlife(int w, int h, int tauxGerme, int nbStep);
     void init();
-    void setConfig(bool config);
+    void setConfig(bool config = false);
     void displaySimu();
     void runSimu(bool stepByStep = false);
     void setSurvieRules(std::string mask);
     void setCreationRules(std::string mask);
+    void clearGrid();
+    void placeOneCell(int x, int y, char icon = 'X', char* label = "unlabelled");
+    void placeAglider(int xCenter, int yCenter);
 
 
 protected :

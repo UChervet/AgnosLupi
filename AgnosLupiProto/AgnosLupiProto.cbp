@@ -36,6 +36,8 @@
 		<Unit filename="GameOlife.h" />
 		<Unit filename="Grid2D.cpp" />
 		<Unit filename="Grid2D.h" />
+		<Unit filename="Immigration.cpp" />
+		<Unit filename="Immigration.h" />
 		<Unit filename="Organism.cpp" />
 		<Unit filename="Organism.h" />
 		<Unit filename="main.cpp" />

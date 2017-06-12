@@ -2,42 +2,53 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="Organism.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="220" topLine="32" />
+		</Cursor>
+	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3269" topLine="43" />
+			<Cursor1 position="2404" topLine="18" />
 		</Cursor>
 		<Folding>
 			<Collapse line="19" />
+			<Collapse line="96" />
 		</Folding>
 	</File>
-	<File name="GameOlife.cpp" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="GameOlife.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1779" topLine="71" />
+			<Cursor1 position="66" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Immigration.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="441" topLine="2" />
 		</Cursor>
 	</File>
 	<File name="GameOlife.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="506" topLine="12" />
+			<Cursor1 position="936" topLine="17" />
+		</Cursor>
+	</File>
+	<File name="Immigration.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2530" topLine="53" />
 		</Cursor>
 	</File>
 	<File name="Grid2D.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="641" topLine="15" />
+			<Cursor1 position="486" topLine="18" />
 		</Cursor>
 	</File>
 	<File name="Organism.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="996" topLine="25" />
+			<Cursor1 position="1050" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="Grid2D.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Grid2D.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2304" topLine="117" />
-		</Cursor>
-	</File>
-	<File name="Organism.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="289" topLine="6" />
+			<Cursor1 position="3951" topLine="159" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

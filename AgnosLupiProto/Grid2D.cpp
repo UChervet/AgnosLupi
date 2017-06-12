@@ -57,7 +57,7 @@ void Grid2D::addRectangleObst(Organism * obstacle, int x1, int y1, int x2, int y
         addOrganism(x,y2,obstacle);
     }
 }
-///TODO osbtacle cercle ?
+
 
 // 2-D coordinates to look in 1-D array
 Organism* Grid2D::getOrganismAt( int x, int y)
@@ -67,23 +67,34 @@ Organism* Grid2D::getOrganismAt( int x, int y)
 
 void Grid2D::addOrganism(int x, int y, Organism * organism)
 {
-    m_organisms [ m_height * x + y ] = organism;
+    m_organisms [ m_height * (x % m_width) + (y % m_height) ] = organism;
 }
 
 void Grid2D::addOrganism(Organism * organism)
 {
-    m_organisms [ m_height * organism->getX() + organism->getY() ] = organism;
+    m_organisms [ m_height * (organism->getX() % m_width) + (organism->getY() % m_height) ] = organism;
 }
 
 void Grid2D::removeOrganism(int x, int y)
 {
-    m_organisms [ m_height * x + y ] = 0;
+    m_organisms [ m_height * (x % m_width) + (y % m_height) ]  = 0;
 }
 
 void Grid2D::supprOrganism(int x, int y)
 {
-    delete m_organisms [ m_height * x + y ];
-    m_organisms [ m_height * x + y ] = 0;
+    delete m_organisms [ m_height * (x % m_width) + (y % m_height) ];
+    m_organisms [ m_height * (x % m_width) + (y % m_height) ]  = 0;
+}
+
+void Grid2D::clearGrid()
+{
+    for(int i = 0; i < m_width; i++)
+    {
+        for(int j = 0; j <m_height; j++)
+        {
+            supprOrganism(i,j);
+        }
+    }
 }
 
 void Grid2D::displayGrid()
@@ -109,7 +120,6 @@ void Grid2D::displayGrid()
 
 int Grid2D::countNeighboor(int x, int y, bool countDiag)
 {
-
     int nbNeighb = 0;
 
     if(this->getOrganismAt(x+1, y))
@@ -156,10 +166,62 @@ int Grid2D::countNeighboor(int x, int y, bool countDiag)
                 nbNeighb++;
         }
     }
+    return nbNeighb;
+}
+
+
+
+
+int Grid2D::countNeighboorType(int x, int y, char* label)
+{
+    int nbNeighb = 0;
+
+    if(this->getOrganismAt(x+1, y))
+    {
+        if(strcmp((this->getOrganismAt(x+1, y)->getLabel()).c_str(), label) == 0 )
+            nbNeighb++;
+    }
+    if(this->getOrganismAt(x-1, y))
+    {
+        if(strcmp((this->getOrganismAt(x-1, y)->getLabel()).c_str(), label) == 0 )
+            nbNeighb++;
+    }
+    if(this->getOrganismAt(x, y+1))
+    {
+        if(strcmp((this->getOrganismAt(x, y+1)->getLabel()).c_str(), label) == 0 )
+            nbNeighb++;
+    }
+    if(this->getOrganismAt(x, y-1))
+    {
+        if(strcmp((this->getOrganismAt(x, y-1)->getLabel()).c_str(), label) == 0 )
+            nbNeighb++;
+    }
+
+    if(this->getOrganismAt(x+1, y+1))
+    {
+        if(strcmp((this->getOrganismAt(x+1, y+1)->getLabel()).c_str(), label) == 0 )
+            nbNeighb++;
+    }
+    if(this->getOrganismAt(x-1, y-1))
+    {
+        if(strcmp((this->getOrganismAt(x-1, y-1)->getLabel()).c_str(), label) == 0 )
+            nbNeighb++;
+    }
+    if(this->getOrganismAt(x-1, y+1))
+    {
+        if(strcmp((this->getOrganismAt(x-1, y+1)->getLabel()).c_str(), label) == 0 )
+            nbNeighb++;
+    }
+    if(this->getOrganismAt(x+1, y-1))
+    {
+        if(strcmp((this->getOrganismAt(x+1, y-1)->getLabel()).c_str(), label) == 0 )
+            nbNeighb++;
+    }
 
     return nbNeighb;
-
 }
+
+
 
 void Grid2D::getListOrganisms(std::vector <Organism *> &listOrganisms)
 {

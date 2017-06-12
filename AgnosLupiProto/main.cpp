@@ -6,8 +6,8 @@
 #include "GameOlife.h"
 #include <time.h>
 #include <string>
-#include <vector>
 #include <stdio.h>
+#include "Immigration.h"
 
 /*
 *   Version Git de AgnusLupi
@@ -74,37 +74,54 @@ int main()
     srand(time(NULL)); // initialisation de rand
     int h = 50;
     int w = 50;
-    int tauxGerme = 80;
+    int tauxGerme = 100;
     int nbStep = 10000;
 
+//    Immigration* simulation = new Immigration(h, w, tauxGerme, nbStep, 50);
+//    simulation->init();
+//    simulation->createGermeAlea();
+//
+//    simulation->setCreationRules("3");
+//    simulation->setSurvieRules("23");
+
+
     GameOlife* simulation = new GameOlife(h, w, tauxGerme, nbStep);
-    simulation->setConfig(true);
+    simulation->setConfig();
     simulation->init();
 
-//    //jeu de la vie
-//    simulation->setSurvieRules("23");
-//    simulation->setCreationRules("3");
+    //record de grossissement
+//    simulation->clearGrid();
+//    simulation->placeOneCell(15,15);
+//    simulation->placeOneCell(17,15);
+//    simulation->placeOneCell(17,16);
+//    simulation->placeOneCell(19,17);
+//    simulation->placeOneCell(19,18);
+//    simulation->placeOneCell(19,19);
+//
+//    simulation->placeOneCell(21,19);
+//    simulation->placeOneCell(21,20);
+//    simulation->placeOneCell(21,18);
+//    simulation->placeOneCell(22,19);
 
-    //highlife
-//    simulation->setSurvieRules("23");
-//    simulation->setCreationRules("36");
+    //machine tournante
+//    simulation->clearGrid();
+//    simulation->placeOneCell(15,16);
+//    simulation->placeOneCell(15,18);
+//    simulation->placeOneCell(16,15);
+//    simulation->placeOneCell(17,16);
+//    simulation->placeOneCell(17,19);
+//    simulation->placeOneCell(18,18);
+//    simulation->placeOneCell(18,19);
+//    simulation->placeOneCell(18,20);
 
-    //diamoeba
-    simulation->setSurvieRules("5678");
-    simulation->setCreationRules("35678");
+    //glider
+    simulation->clearGrid();
+    simulation->placeAglider(20,20);
 
-    //amoeba
-//    simulation->setSurvieRules("1358");
-//    simulation->setCreationRules("357");
 
-    //labyrinth
-//    simulation->setSurvieRules("12345");
-//    simulation->setCreationRules("3");
-
-    //day&night
-//    simulation->setSurvieRules("345678");
-//    simulation->setCreationRules("3678");
-
+    //jeu de la vie
+    simulation->setSurvieRules("23");
+    simulation->setCreationRules("36");
 
     simulation->displaySimu();
     char tempo;
@@ -117,74 +134,52 @@ int main()
 
 
 
-/*//    //INIT
-    srand(time(NULL)); // initialisation de rand
-    int tfinal = 1000; //time step max
-    Grid2D* world = new Grid2D(40,30);
-    vector <Organism *> listOrganisms;
 
-    //creation of the obstacle object
-    Organism* obstacle = new Organism(0, 0, world);
-    obstacle->setLabel("obstacle");
-    obstacle->setIcon('@');
-    world->setBorders(obstacle);
-
-    //creation et placement organisms
-    Organism toto(world);
-    toto.setIcon('m');
-    world->addOrganism(toto.getX(), toto.getY(), &toto);
-    Organism ereer(world);
-    ereer.setIcon('m');
-    world->addOrganism(ereer.getX(), ereer.getY(), &ereer);
-    Organism fqsfqs(world);
-    fqsfqs.setIcon('m');
-    world->addOrganism(fqsfqs.getX(), fqsfqs.getY(), &fqsfqs);
-    Organism sdfsd(world);
-    sdfsd.setIcon('m');
-    world->addOrganism(sdfsd.getX(), sdfsd.getY(), &sdfsd);
-    Organism arerer(world);
-    arerer.setIcon('m');
-    world->addOrganism(arerer.getX(), arerer.getY(), &arerer);
-
-    Organism jeanjean(world);
-    jeanjean.setIcon('n');
-    world->addOrganism(jeanjean.getX(), jeanjean.getY(), &jeanjean);
-
-    Organism kevin(world);
-    kevin.setIcon('w');
-    world->addOrganism(kevin.getX(), kevin.getY(), &kevin);
-
-
-    for(int step = 0; step < tfinal; step ++)
-    {
-        _sleep(40);
-        system("cls");
-
-        world->getListOrganisms(listOrganisms);
-        for(int i =0; i < listOrganisms.size(); i++)
-        {
-            listOrganisms[i]->walk();
-            //if(step%50 == 25)
-            //{
-                if (rand() % 1000 < 15)
-                    listOrganisms[i]->reproduce();
-
-                if (rand() % 1000 < 10)
-                {
-                    listOrganisms[i]->die();
-                }
-            //}
-        }
-
-
-        cout<<"Step : "<<step<<endl;
-        cout<<"Organims : "<<listOrganisms.size()<<endl;
-        world->displayGrid();
-    }
-
-    //destruction des ptrs
-    delete obstacle;
-    obstacle = 0;
-    delete world;
-    world = 0;
-    return 0;*/
+//int main()
+//{
+//    srand(time(NULL)); // initialisation de rand
+//    int h = 50;
+//    int w = 50;
+//    int tauxGerme = 80;
+//    int nbStep = 10000;
+//
+//    GameOlife* simulation = new GameOlife(h, w, tauxGerme, nbStep);
+//    simulation->setConfig(true);
+//    simulation->init();
+//
+////    //jeu de la vie
+////    simulation->setSurvieRules("23");
+////    simulation->setCreationRules("3");
+//
+//    //highlife
+////    simulation->setSurvieRules("23");
+////    simulation->setCreationRules("36");
+//
+//    //diamoeba
+////    simulation->setSurvieRules("5678");
+////    simulation->setCreationRules("35678");
+//
+//    //amoeba
+////    simulation->setSurvieRules("1358");
+////    simulation->setCreationRules("357");
+//
+//    //labyrinth
+////    simulation->setSurvieRules("12345");
+////    simulation->setCreationRules("3");
+//
+//    //day&night
+////    simulation->setSurvieRules("345678");
+////    simulation->setCreationRules("3678");
+//
+//    //life 3-4
+//    simulation->setSurvieRules("34");
+//    simulation->setCreationRules("34");
+//
+//
+//    simulation->displaySimu();
+//    char tempo;
+//    scanf("%c",&tempo);
+//    simulation->runSimu();
+//
+//    return 0;
+//}

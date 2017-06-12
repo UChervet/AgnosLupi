@@ -13,7 +13,8 @@ public :
     Organism(int x, int y);
     Organism(int x, int y, Grid2D * grid);
     Organism(int x, int y, Grid2D * grid, char icon);
-    Organism(Grid2D * grid, char icon); //random starting x and y
+    Organism(int x, int y, Grid2D * grid, char icon, std::string label);
+    Organism(Grid2D * grid, char icon, std::string label = "unlabelled"); //random starting x and y
 
     //init functions
     /*static*/ void setGrid(Grid2D * grid); /// TO DO :faudrait passer ça en static

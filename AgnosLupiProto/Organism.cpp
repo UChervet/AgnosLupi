@@ -25,8 +25,13 @@ Organism::Organism(int x, int y, Grid2D * grid, char ic) : m_X(x), m_Y(y), m_gri
     m_label = "unlabelled"; //default unknown label
 }
 
+Organism::Organism(int x, int y, Grid2D * grid, char ic, string label) : m_X(x), m_Y(y), m_grid(grid), m_icon(ic)
+{
+    m_label = label; //default unknown label
+}
+
 //placement aléatoire
-Organism::Organism(Grid2D * grid, char ic) : m_grid(grid), m_icon(ic)
+Organism::Organism(Grid2D * grid, char ic, string label) : m_grid(grid), m_icon(ic), m_label(label)
 {
     bool isPlaced = false;
     while(!isPlaced)
@@ -38,8 +43,6 @@ Organism::Organism(Grid2D * grid, char ic) : m_grid(grid), m_icon(ic)
             isPlaced = true;
         }
     }
-    m_label = "unlabelled"; //default unknown label
-    //m_icon = '¿'; //default unknown icon
 }
 
 int Organism::getX()

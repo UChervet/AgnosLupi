@@ -64,7 +64,7 @@
 	<string>
 	<vector>
 
-1497261448 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.cpp
+1497274730 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.cpp
 	"Grid2D.h"
 	"Organism.h"
 	<iostream>
@@ -73,14 +73,14 @@
 	<stdlib.h>
 	<vector>
 
-1496932311 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.h
+1497271944 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.h
 	"Organism.h"
 	<vector>
 
-1496932159 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.h
+1497265620 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.h
 	<string>
 
-1497261532 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
+1497273974 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
 	<iostream>
 	<cstdlib>
 	<stdlib.h>
@@ -89,23 +89,23 @@
 	"GameOlife.h"
 	<time.h>
 	<string>
-	<vector>
 	<stdio.h>
+	"Immigration.h"
 
-1496930312 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.cpp
+1497265403 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.cpp
 	"Organism.h"
 	"Grid2D.h"
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 
-1497261225 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.h
+1497273742 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.h
 	"Organism.h"
 	"Grid2D.h"
 	<vector>
 	<string.h>
 
-1497261243 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.cpp
+1497274730 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.cpp
 	"GameOlife.h"
 	"Grid2D.h"
 	<stdlib.h>
@@ -113,4 +113,16 @@
 	<stdio.h>
 	<string.h>
 	<sstream>
+
+1497270267 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\immigration.cpp
+	"Immigration.h"
+	"GameOlife.h"
+	<string>
+	<vector>
+	<stdlib.h>
+
+1497270429 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\immigration.h
+	"GameOlife.h"
+	<string>
+	<vector>
 

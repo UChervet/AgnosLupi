@@ -22,7 +22,7 @@ void GameOlife::createGermeAlea()
     int nbCellStart = (m_hGrid*m_wGrid*m_tauxGerme)/100;
     for(int i = 0; i < nbCellStart; i++)
     {
-        m_listOrganisms.push_back(Organism(m_grid, 'X'));
+        m_listOrganisms.push_back(Organism(m_grid, 'X', "unlabelled"));
     }
     for(int i = 0; i < m_listOrganisms.size(); i++)
     {
@@ -37,7 +37,7 @@ void GameOlife::createDroplet(int taille, int center[])
         for(int j = 0; j < taille; j++)
         {
             if(rand() % 100 < m_tauxGerme)
-                m_listOrganisms.push_back(Organism(center[0]-taille/2+i+j, center[1]-taille/2+i-j,m_grid, 'X'));
+                m_listOrganisms.push_back(Organism(center[0]-taille/2+i+j, center[1]-taille/2+i-j,m_grid, 'X', "unlabelled"));
         }
     }
 
@@ -75,6 +75,21 @@ void GameOlife::init()
     } else {
         this->createGermeAlea();
     }
+}
+
+void GameOlife::placeOneCell(int x, int y, char icon, char* label)
+{
+    m_listOrganisms.push_back(Organism(x, y, m_grid, icon, label));
+    m_grid->addOrganism(&m_listOrganisms.back());
+}
+
+void GameOlife::placeAglider(int xCenter, int yCenter)
+{
+    this->placeOneCell(xCenter-1,yCenter-1);
+    this->placeOneCell(xCenter,yCenter-1);
+    this->placeOneCell(xCenter+1,yCenter-1);
+    this->placeOneCell(xCenter+1,yCenter);
+    this->placeOneCell(xCenter,yCenter+1);
 }
 
 void GameOlife::addCreationRule(int a)
@@ -153,7 +168,7 @@ void GameOlife::runOneStep()
                 if(m_grid->countNeighboor(i,j,true) == m_survieRule[indexS])  //utiliser des conversions binaire et un masque pour la suite
                 {
                     if(m_grid->getOrganismAt(i, j))
-                        newListOrganisms.push_back(Organism(i,j,m_grid, 'X'));
+                        newListOrganisms.push_back(Organism(i,j,m_grid, 'X', "unlabelled"));
                 }
             }
             //reproduction
@@ -161,7 +176,7 @@ void GameOlife::runOneStep()
             {
                 if(m_grid->countNeighboor(i,j,true) == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
                 {
-                    newListOrganisms.push_back(Organism(i,j,m_grid, 'X'));
+                    newListOrganisms.push_back(Organism(i,j,m_grid, 'X', "unlabelled"));
                 }
             }
         }
@@ -191,7 +206,6 @@ void GameOlife::runSimu(bool stepByStep)
         }
         else
         {
-            //_sleep(80); //si suit recommandation pas c++11 version
             _sleep(80);
         }
         system("cls");
@@ -199,4 +213,15 @@ void GameOlife::runSimu(bool stepByStep)
         cout<<"Step simulation : " << i << endl;
 
     }
+}
+
+void GameOlife::clearGrid()
+{
+    m_grid->clearGrid();
+
+    //remettre les bordures
+//    m_border = new Organism(0, 0, m_grid);
+//    m_border->setLabel("obstacle");
+//    m_border->setIcon('@');
+//    m_grid->setBorders(m_border);
 }
