@@ -176,46 +176,54 @@ int Grid2D::countNeighboorType(int x, int y, char* label)
 {
     int nbNeighb = 0;
 
-    if(this->getOrganismAt(x+1, y))
+    if(strcmp(label, "all") == 0)
     {
-        if(strcmp((this->getOrganismAt(x+1, y)->getLabel()).c_str(), label) == 0 )
-            nbNeighb++;
+        nbNeighb = countNeighboor(x,y,true);
     }
-    if(this->getOrganismAt(x-1, y))
+    else
     {
-        if(strcmp((this->getOrganismAt(x-1, y)->getLabel()).c_str(), label) == 0 )
-            nbNeighb++;
-    }
-    if(this->getOrganismAt(x, y+1))
-    {
-        if(strcmp((this->getOrganismAt(x, y+1)->getLabel()).c_str(), label) == 0 )
-            nbNeighb++;
-    }
-    if(this->getOrganismAt(x, y-1))
-    {
-        if(strcmp((this->getOrganismAt(x, y-1)->getLabel()).c_str(), label) == 0 )
-            nbNeighb++;
-    }
 
-    if(this->getOrganismAt(x+1, y+1))
-    {
-        if(strcmp((this->getOrganismAt(x+1, y+1)->getLabel()).c_str(), label) == 0 )
-            nbNeighb++;
-    }
-    if(this->getOrganismAt(x-1, y-1))
-    {
-        if(strcmp((this->getOrganismAt(x-1, y-1)->getLabel()).c_str(), label) == 0 )
-            nbNeighb++;
-    }
-    if(this->getOrganismAt(x-1, y+1))
-    {
-        if(strcmp((this->getOrganismAt(x-1, y+1)->getLabel()).c_str(), label) == 0 )
-            nbNeighb++;
-    }
-    if(this->getOrganismAt(x+1, y-1))
-    {
-        if(strcmp((this->getOrganismAt(x+1, y-1)->getLabel()).c_str(), label) == 0 )
-            nbNeighb++;
+        if(this->getOrganismAt(x+1, y))
+        {
+            if(strcmp((this->getOrganismAt(x+1, y)->getLabel()).c_str(), label) == 0 )
+                nbNeighb++;
+        }
+        if(this->getOrganismAt(x-1, y))
+        {
+            if(strcmp((this->getOrganismAt(x-1, y)->getLabel()).c_str(), label) == 0 )
+                nbNeighb++;
+        }
+        if(this->getOrganismAt(x, y+1))
+        {
+            if(strcmp((this->getOrganismAt(x, y+1)->getLabel()).c_str(), label) == 0 )
+                nbNeighb++;
+        }
+        if(this->getOrganismAt(x, y-1))
+        {
+            if(strcmp((this->getOrganismAt(x, y-1)->getLabel()).c_str(), label) == 0 )
+                nbNeighb++;
+        }
+
+        if(this->getOrganismAt(x+1, y+1))
+        {
+            if(strcmp((this->getOrganismAt(x+1, y+1)->getLabel()).c_str(), label) == 0 )
+                nbNeighb++;
+        }
+        if(this->getOrganismAt(x-1, y-1))
+        {
+            if(strcmp((this->getOrganismAt(x-1, y-1)->getLabel()).c_str(), label) == 0 )
+                nbNeighb++;
+        }
+        if(this->getOrganismAt(x-1, y+1))
+        {
+            if(strcmp((this->getOrganismAt(x-1, y+1)->getLabel()).c_str(), label) == 0 )
+                nbNeighb++;
+        }
+        if(this->getOrganismAt(x+1, y-1))
+        {
+            if(strcmp((this->getOrganismAt(x+1, y-1)->getLabel()).c_str(), label) == 0 )
+                nbNeighb++;
+        }
     }
 
     return nbNeighb;

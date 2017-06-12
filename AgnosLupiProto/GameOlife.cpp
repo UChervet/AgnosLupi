@@ -165,7 +165,7 @@ void GameOlife::runOneStep()
             //survie
             for(int indexS = 0; indexS < m_survieRule.size(); indexS++)
             {
-                if(m_grid->countNeighboor(i,j,true) == m_survieRule[indexS])  //utiliser des conversions binaire et un masque pour la suite
+                if(m_grid->countNeighboorType(i,j,"all") == m_survieRule[indexS])  //utiliser des conversions binaire et un masque pour la suite
                 {
                     if(m_grid->getOrganismAt(i, j))
                         newListOrganisms.push_back(Organism(i,j,m_grid, 'X', "unlabelled"));
@@ -174,7 +174,7 @@ void GameOlife::runOneStep()
             //reproduction
             for(int indexR = 0; indexR < m_creationRule.size(); indexR++)
             {
-                if(m_grid->countNeighboor(i,j,true) == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
+                if(m_grid->countNeighboorType(i,j,"all") == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
                 {
                     newListOrganisms.push_back(Organism(i,j,m_grid, 'X', "unlabelled"));
                 }

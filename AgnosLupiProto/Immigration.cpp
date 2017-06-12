@@ -49,7 +49,7 @@ void Immigration::runOneStep()
             //survie
             for(int indexS = 0; indexS < m_survieRule.size(); indexS++)
             {
-                if(m_grid->countNeighboor(i,j,true) == m_survieRule[indexS])  //utiliser des conversions binaire et un masque pour la suite
+                if(m_grid->countNeighboorType(i,j,"all") == m_survieRule[indexS])
                 {
                     if(m_grid->getOrganismAt(i, j))
                     {
@@ -61,7 +61,7 @@ void Immigration::runOneStep()
             //reproduction
             for(int indexR = 0; indexR < m_creationRule.size(); indexR++)
             {
-                if(m_grid->countNeighboor(i,j,true) == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
+                if(m_grid->countNeighboorType(i,j,"all") == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
                 {
                     //en cas de naissance la cellule sera du type majoritaire dans son voisinnage
                     if(m_grid->countNeighboorType(i,j,"cross") > m_grid->countNeighboorType(i,j,"cercle"))
