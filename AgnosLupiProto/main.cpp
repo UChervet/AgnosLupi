@@ -74,11 +74,13 @@ int main()
     srand(time(NULL)); // initialisation de rand
     int h = 50;
     int w = 50;
-    int tauxGerme = 20;
+    int tauxGerme = 80;
     int nbStep = 10000;
 
     GameOlife* simulation = new GameOlife(h, w, tauxGerme, nbStep);
+    simulation->setConfig(true);
     simulation->init();
+
 //    //jeu de la vie
 //    simulation->setSurvieRules("23");
 //    simulation->setCreationRules("3");
@@ -98,6 +100,10 @@ int main()
     //labyrinth
 //    simulation->setSurvieRules("12345");
 //    simulation->setCreationRules("3");
+
+    //day&night
+//    simulation->setSurvieRules("345678");
+//    simulation->setCreationRules("3678");
 
 
     simulation->displaySimu();

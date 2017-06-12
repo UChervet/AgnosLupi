@@ -30,15 +30,51 @@ void GameOlife::createGermeAlea()
     }
 }
 
+void GameOlife::createDroplet(int taille, int center[])
+{
+    for(int i = 0; i < taille; i ++)
+    {
+        for(int j = 0; j < taille; j++)
+        {
+            if(rand() % 100 < m_tauxGerme)
+                m_listOrganisms.push_back(Organism(center[0]-taille/2+i+j, center[1]-taille/2+i-j,m_grid, 'X'));
+        }
+    }
+
+    for(int i = 0; i < m_listOrganisms.size(); i++)
+    {
+        m_grid->addOrganism(&m_listOrganisms[i]);
+    }
+
+}
+
+void GameOlife::createFixGerme()
+{
+    int c[2] = {m_wGrid/4,m_hGrid/4}; //centre du carre
+    createDroplet(m_hGrid/8, c);
+
+    c[0] = 3*m_hGrid/4;
+    c[1] = 3*m_wGrid/4;
+    createDroplet(m_hGrid/10, c);
+
+    c[0] = 3*m_hGrid/4;
+    c[1] = m_wGrid/2;
+    createDroplet(m_hGrid/10, c);
+}
+
 void GameOlife::init()
 {
-
     m_border = new Organism(0, 0, m_grid);
     m_border->setLabel("obstacle");
     m_border->setIcon('@');
     m_grid->setBorders(m_border);
 
-    this->createGermeAlea();
+    if (m_fixedConfig)
+    {
+        this->createFixGerme();
+    } else {
+        this->createGermeAlea();
+    }
 }
 
 void GameOlife::addCreationRule(int a)
@@ -97,7 +133,10 @@ void GameOlife::displaySimu()
     m_grid->displayGrid();
 }
 
-
+void GameOlife::setConfig(bool config)
+{
+    m_fixedConfig = config;
+}
 
 
 void GameOlife::runOneStep()
@@ -122,7 +161,7 @@ void GameOlife::runOneStep()
             {
                 if(m_grid->countNeighboor(i,j,true) == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
                 {
-                        newListOrganisms.push_back(Organism(i,j,m_grid, 'X'));
+                    newListOrganisms.push_back(Organism(i,j,m_grid, 'X'));
                 }
             }
         }
@@ -149,7 +188,9 @@ void GameOlife::runSimu(bool stepByStep)
         {
             char tempo;
             scanf("%c",&tempo);
-        } else {
+        }
+        else
+        {
             //_sleep(80); //si suit recommandation pas c++11 version
             _sleep(80);
         }
