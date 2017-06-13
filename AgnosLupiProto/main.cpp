@@ -76,7 +76,7 @@ int main()
     int w = 50;
     int tauxGerme = 50;
     int nbStep = 10000;
-    int ratioPop = 75;
+    int ratioPop = 40;
 
     Immigration* simulation = new Immigration(h, w, tauxGerme, nbStep, ratioPop);
     simulation->init();

@@ -1,3 +1,15 @@
+/**
+ * \file Organism.h
+ * \brief Simulation entity
+ *
+ * Représente une entité vivante pour la simulation. Class mère des différentes
+ * particularisation pour les simulations (arbre, prey, predator, etc...)
+ * Caractérisé par la grid sur lequel il est place, sa position sur cette grille
+ * son étiquette et ses paramètres graphiques
+ *
+ */
+
+
 #ifndef ORGANISM_H_INCLUDED
 #define ORGANISM_H_INCLUDED
 
@@ -19,13 +31,10 @@ public :
     //init functions
     /*static*/ void setGrid(Grid2D * grid); /// TO DO :faudrait passer ça en static
 
-    //tool functions
-    void moveTo(int x, int y);
+    //accessors
     int getX();
     int getY();
     void setPosition(int x, int y);
-    bool hasFreeNeighbour();
-    int countNeighbour(bool countDiag = false);
     std::string getLabel();
     void setLabel(std::string label);
     char getIcon();
@@ -33,11 +42,17 @@ public :
     int getColor();
     void setColor(int color);
 
+    //utility functions
+    void moveTo(int x, int y);
+    bool hasFreeNeighbour();
+    int countNeighbour(bool countDiag = false);
+
+
     //action functions
     bool walk();
     bool reproduce();
-    //void eat();
-    //void live();
+    //void eat(); ///TODO
+    //void live(); ///TODO
     void die();
 
 
@@ -47,8 +62,6 @@ protected:
     std::string m_label;
     char m_icon;
     int m_color;
-    int m_livedspan;
-    int m_hunger;
     /*static*/ Grid2D* m_grid; /// TO DO : faudrait passer ça en static
 
 };

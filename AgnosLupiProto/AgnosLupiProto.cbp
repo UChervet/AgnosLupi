@@ -41,9 +41,8 @@
 		<Unit filename="Organism.cpp" />
 		<Unit filename="Organism.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="pbDaf.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="qcustomplot.cpp" />
+		<Unit filename="qcustomplot.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
