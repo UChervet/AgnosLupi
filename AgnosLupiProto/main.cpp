@@ -8,6 +8,7 @@
 #include <string>
 #include <stdio.h>
 #include "Immigration.h"
+#include "FireForest.h"
 
 /*
 *   Version Git de AgnusLupi
@@ -78,13 +79,8 @@ int main()
     int nbStep = 10000;
     int ratioPop = 40;
 
-    Immigration* simulation = new Immigration(h, w, tauxGerme, nbStep, ratioPop);
+    FireForest* simulation = new FireForest(w,h,nbStep,100,40);
     simulation->init();
-    simulation->createFixGerme();
-    //simulation->placeAglider(30,30);
-
-    simulation->setCreationRules("36");
-    simulation->setSurvieRules("23");
 
     simulation->displaySimu();
     char tempo;

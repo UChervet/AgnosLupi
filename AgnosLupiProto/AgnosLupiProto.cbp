@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="FireForest.cpp" />
+		<Unit filename="FireForest.h" />
 		<Unit filename="GameOlife.cpp" />
 		<Unit filename="GameOlife.h" />
 		<Unit filename="Grid2D.cpp" />
@@ -40,6 +42,8 @@
 		<Unit filename="Immigration.h" />
 		<Unit filename="Organism.cpp" />
 		<Unit filename="Organism.h" />
+		<Unit filename="Simulation.cpp" />
+		<Unit filename="Simulation.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

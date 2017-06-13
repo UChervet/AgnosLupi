@@ -81,7 +81,7 @@
 1497346900 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.h
 	<string>
 
-1497360578 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
+1497366812 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
 	<iostream>
 	<cstdlib>
 	<stdlib.h>
@@ -92,6 +92,7 @@
 	<string>
 	<stdio.h>
 	"Immigration.h"
+	"FireForest.h"
 
 1497342237 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.cpp
 	"Organism.h"
@@ -116,7 +117,7 @@
 	<string.h>
 	<sstream>
 
-1497360647 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\immigration.cpp
+1497360700 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\immigration.cpp
 	"Immigration.h"
 	"GameOlife.h"
 	<string>
@@ -135,9 +136,22 @@
 	"Grid2D.h"
 	<vector>
 
-1497360325 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\simulation.cpp
+1497366570 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\simulation.cpp
 	"Simulation.h"
 	<stdlib.h>
 	<iostream>
 	<stdio.h>
+
+1497366001 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\fireforest.cpp
+	"FireForest.h"
+	"Organism.h"
+	"Grid2D.h"
+	<stdlib.h>
+	<stdio.h>
+	"string.h"
+
+1497365276 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\fireforest.h
+	"Simulation.h"
+	"Organism.h"
+	"Grid2D.h"
 
