@@ -6,6 +6,7 @@
 #include "GameOlife.h"
 #include <time.h>
 #include <string>
+#include <windows.h>
 #include <stdio.h>
 #include "Immigration.h"
 
@@ -74,20 +75,20 @@ int main()
     srand(time(NULL)); // initialisation de rand
     int h = 50;
     int w = 50;
-    int tauxGerme = 100;
+    int tauxGerme = 50;
     int nbStep = 10000;
+    int ratioPop = 75;
 
-//    Immigration* simulation = new Immigration(h, w, tauxGerme, nbStep, 50);
-//    simulation->init();
-//    simulation->createGermeAlea();
-//
-//    simulation->setCreationRules("3");
-//    simulation->setSurvieRules("23");
-
-
-    GameOlife* simulation = new GameOlife(h, w, tauxGerme, nbStep);
-    simulation->setConfig();
+    Immigration* simulation = new Immigration(h, w, tauxGerme, nbStep, ratioPop);
     simulation->init();
+    simulation->createFixGerme();
+    //simulation->placeAglider(2,30);
+
+    simulation->setCreationRules("36");
+    simulation->setSurvieRules("23");
+
+
+
 
     //record de grossissement
 //    simulation->clearGrid();
@@ -115,18 +116,18 @@ int main()
 //    simulation->placeOneCell(18,20);
 
     //glider
-    simulation->clearGrid();
-    simulation->placeAglider(20,20);
+//    simulation->clearGrid();
+//    simulation->placeAglider(20,20);
 
 
     //jeu de la vie
-    simulation->setSurvieRules("23");
-    simulation->setCreationRules("36");
+//    simulation->setSurvieRules("23");
+//    simulation->setCreationRules("3");
 
     simulation->displaySimu();
     char tempo;
     scanf("%c",&tempo);
-    simulation->runSimu();
+    simulation->runSimuImmi();
 
     return 0;
 }

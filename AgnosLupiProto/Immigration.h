@@ -12,16 +12,18 @@ public:
 
     void init();
 
-    void runOneStep();
+    void runOneStepImmi();
+    void runSimuImmi(bool stepByStep = false);
     void createGermeAlea();
+    void createFixGerme();
 
 protected:
     //std::vector <string> m_labels //pour après si je fais avec plus de population
     int m_startingRatio; //ratio between the two population from 0 to 100
-    char m_iconA;
-    char m_iconB;
-    std::string m_labelA;
-    std::string m_lableB;
+    char m_iconA = 'X';
+    char m_iconB = '#';
+    char* m_labelA = "Atype";
+    char* m_labelB = "Btype";
 };
 
 #endif // IMMIGRATION_H_INCLUDED

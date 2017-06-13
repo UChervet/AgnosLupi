@@ -3,6 +3,10 @@
 #include <string>
 #include <vector>
 #include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 Immigration::Immigration(int w, int h, int tauxGerme, int nbStep, int startingRatio) : GameOlife(w, h, tauxGerme, nbStep), m_startingRatio(startingRatio)
 { }
@@ -22,11 +26,11 @@ void Immigration::createGermeAlea()
     {
         if(rand() % 100 < m_startingRatio)
         {
-            m_listOrganisms.push_back(Organism(m_grid, 'X', "cross"));
+            m_listOrganisms.push_back(Organism(m_grid, m_iconA, m_labelA));
         }
         else
         {
-            m_listOrganisms.push_back(Organism(m_grid, 'O', "cercle"));
+            m_listOrganisms.push_back(Organism(m_grid, m_iconB, m_labelB));
         }
 
     }
@@ -37,8 +41,32 @@ void Immigration::createGermeAlea()
 }
 
 
+void Immigration::createFixGerme()
+{
+    int nbCellStart = (m_hGrid*m_wGrid*m_tauxGerme)/100;
+    int X, Y;
+    for(int i = 0; i < nbCellStart; i++)
+    {
+        X = 1 + rand() %  (m_grid->getWidth() - 2);
+        Y = 1 + rand() %  (m_grid->getHeight() - 2);
+        if(X < m_grid->getWidth()*m_startingRatio/100)
+        {
+            m_listOrganisms.push_back(Organism(X,Y,m_grid, m_iconA, m_labelA));
+        }
+        else
+        {
+            m_listOrganisms.push_back(Organism(X,Y,m_grid, m_iconB, m_labelB));
+        }
 
-void Immigration::runOneStep()
+    }
+    for(int i = 0; i < m_listOrganisms.size(); i++)
+    {
+        m_grid->addOrganism(&m_listOrganisms[i]);
+    }
+}
+
+
+void Immigration::runOneStepImmi()
 {
     std::vector <Organism> newListOrganisms;
 
@@ -64,11 +92,11 @@ void Immigration::runOneStep()
                 if(m_grid->countNeighboorType(i,j,"all") == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
                 {
                     //en cas de naissance la cellule sera du type majoritaire dans son voisinnage
-                    if(m_grid->countNeighboorType(i,j,"cross") > m_grid->countNeighboorType(i,j,"cercle"))
+                    if(m_grid->countNeighboorType(i,j,m_labelA) > m_grid->countNeighboorType(i,j,m_labelB))
                     {
-                        newListOrganisms.push_back(Organism(i,j,m_grid, 'X', "cross"));
+                       newListOrganisms.push_back(Organism(i,j,m_grid, m_iconA, m_labelA));
                     } else {
-                        newListOrganisms.push_back(Organism(i,j,m_grid, 'O', "cercle"));
+                        newListOrganisms.push_back(Organism(i,j,m_grid, m_iconB, m_labelB));
                     }
                 }
             }
@@ -84,6 +112,27 @@ void Immigration::runOneStep()
     for(int i = 0; i < m_listOrganisms.size(); i++)
     {
         m_grid->addOrganism(&m_listOrganisms[i]);
+    }
+}
+
+void Immigration::runSimuImmi(bool stepByStep)
+{
+    for(int i = 0; i < m_nbStemSimu; i++)
+    {
+        this->runOneStepImmi();
+        if(stepByStep)
+        {
+            char tempo;
+            scanf("%c",&tempo);
+        }
+        else
+        {
+            _sleep(80);
+        }
+        system("cls");
+        this->displaySimu();
+        cout<<"Step simulation : " << i << endl;
+
     }
 }
 
