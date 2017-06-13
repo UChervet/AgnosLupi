@@ -66,7 +66,7 @@ void Immigration::createFixGerme()
 }
 
 
-void Immigration::runOneStepImmi()
+void Immigration::runOneStep()
 {
     std::vector <Organism> newListOrganisms;
 
@@ -115,25 +115,5 @@ void Immigration::runOneStepImmi()
     }
 }
 
-void Immigration::runSimuImmi(bool stepByStep)
-{
-    for(int i = 0; i < m_nbStemSimu; i++)
-    {
-        this->runOneStepImmi();
-        if(stepByStep)
-        {
-            char tempo;
-            scanf("%c",&tempo);
-        }
-        else
-        {
-            _sleep(200);
-        }
-        system("cls");
-        this->displaySimu();
-        cout<<"Step simulation : " << i << endl;
-
-    }
-}
 
 

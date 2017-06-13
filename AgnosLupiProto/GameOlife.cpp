@@ -12,10 +12,8 @@ GameOlife::GameOlife()
 { }
 
 GameOlife::GameOlife(int w, int h, int tauxGerme, int nbStep)
-    : m_wGrid(w), m_hGrid(h), m_tauxGerme(tauxGerme), m_nbStemSimu(nbStep)
-{
-    m_grid = new Grid2D(w,h);
-}
+    : Simulation(w,h,nbStep), m_tauxGerme(tauxGerme)
+{ }
 
 void GameOlife::createGermeAlea()
 {
@@ -143,10 +141,6 @@ void GameOlife::setSurvieRules(string mask)
     }
 }
 
-void GameOlife::displaySimu()
-{
-    m_grid->displayGrid();
-}
 
 void GameOlife::setConfig(bool config)
 {
@@ -194,34 +188,3 @@ void GameOlife::runOneStep()
     }
 }
 
-void GameOlife::runSimu(bool stepByStep)
-{
-    for(int i = 0; i < m_nbStemSimu; i++)
-    {
-        this->runOneStep();
-        if(stepByStep)
-        {
-            char tempo;
-            scanf("%c",&tempo);
-        }
-        else
-        {
-            _sleep(80);
-        }
-        system("cls");
-        this->displaySimu();
-        cout<<"Step simulation : " << i << endl;
-
-    }
-}
-
-void GameOlife::clearGrid()
-{
-    m_grid->clearGrid();
-
-    //remettre les bordures
-//    m_border = new Organism(0, 0, m_grid);
-//    m_border->setLabel("obstacle");
-//    m_border->setIcon('@');
-//    m_grid->setBorders(m_border);
-}

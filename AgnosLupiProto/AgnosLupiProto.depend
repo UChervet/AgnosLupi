@@ -64,7 +64,7 @@
 	<string>
 	<vector>
 
-1497346933 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.cpp
+1497357876 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.cpp
 	"Grid2D.h"
 	"Organism.h"
 	<iostream>
@@ -81,7 +81,7 @@
 1497346900 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.h
 	<string>
 
-1497346982 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
+1497360578 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
 	<iostream>
 	<cstdlib>
 	<stdlib.h>
@@ -100,13 +100,14 @@
 	<stdio.h>
 	<stdlib.h>
 
-1497273742 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.h
+1497360227 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.h
+	"Simulation.h"
 	"Organism.h"
 	"Grid2D.h"
 	<vector>
 	<string.h>
 
-1497277301 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.cpp
+1497360251 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\gameolife.cpp
 	"GameOlife.h"
 	"Grid2D.h"
 	<stdlib.h>
@@ -115,7 +116,7 @@
 	<string.h>
 	<sstream>
 
-1497341873 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\immigration.cpp
+1497360647 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\immigration.cpp
 	"Immigration.h"
 	"GameOlife.h"
 	<string>
@@ -124,8 +125,19 @@
 	<stdio.h>
 	<iostream>
 
-1497341679 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\immigration.h
+1497360673 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\immigration.h
 	"GameOlife.h"
 	<string>
 	<vector>
+
+1497360226 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\simulation.h
+	"Organism.h"
+	"Grid2D.h"
+	<vector>
+
+1497360325 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\simulation.cpp
+	"Simulation.h"
+	<stdlib.h>
+	<iostream>
+	<stdio.h>
 

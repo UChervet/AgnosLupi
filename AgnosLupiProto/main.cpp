@@ -81,52 +81,15 @@ int main()
     Immigration* simulation = new Immigration(h, w, tauxGerme, nbStep, ratioPop);
     simulation->init();
     simulation->createFixGerme();
-    //simulation->placeAglider(2,30);
+    //simulation->placeAglider(30,30);
 
     simulation->setCreationRules("36");
     simulation->setSurvieRules("23");
 
-
-
-
-    //record de grossissement
-//    simulation->clearGrid();
-//    simulation->placeOneCell(15,15);
-//    simulation->placeOneCell(17,15);
-//    simulation->placeOneCell(17,16);
-//    simulation->placeOneCell(19,17);
-//    simulation->placeOneCell(19,18);
-//    simulation->placeOneCell(19,19);
-//
-//    simulation->placeOneCell(21,19);
-//    simulation->placeOneCell(21,20);
-//    simulation->placeOneCell(21,18);
-//    simulation->placeOneCell(22,19);
-
-    //machine tournante
-//    simulation->clearGrid();
-//    simulation->placeOneCell(15,16);
-//    simulation->placeOneCell(15,18);
-//    simulation->placeOneCell(16,15);
-//    simulation->placeOneCell(17,16);
-//    simulation->placeOneCell(17,19);
-//    simulation->placeOneCell(18,18);
-//    simulation->placeOneCell(18,19);
-//    simulation->placeOneCell(18,20);
-
-    //glider
-//    simulation->clearGrid();
-//    simulation->placeAglider(20,20);
-
-
-    //jeu de la vie
-//    simulation->setSurvieRules("23");
-//    simulation->setCreationRules("3");
-
     simulation->displaySimu();
     char tempo;
     scanf("%c",&tempo);
-    simulation->runSimuImmi();
+    simulation->runSimu();
 
     return 0;
 }
