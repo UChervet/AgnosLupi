@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <vector>
-//#include "qcustomplot.h"
 
 using namespace std;
 
