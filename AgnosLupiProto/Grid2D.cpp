@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include <vector>
 
 using namespace std;
@@ -111,6 +112,7 @@ void Grid2D::displayGrid()
             else
             {
                 //si case occupee
+                color(getOrganismAt(i,j)->getColor(),0);
                 cout << getOrganismAt(i,j)->getIcon();
             }
         }
@@ -248,4 +250,11 @@ void Grid2D::getListOrganisms(std::vector <Organism *> &listOrganisms)
                 }
             }
         }
+}
+
+
+void color(int t,int f)
+{
+        HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+            SetConsoleTextAttribute(H,f*16+t);
 }

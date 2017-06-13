@@ -26,11 +26,11 @@ void Immigration::createGermeAlea()
     {
         if(rand() % 100 < m_startingRatio)
         {
-            m_listOrganisms.push_back(Organism(m_grid, m_iconA, m_labelA));
+            m_listOrganisms.push_back(Organism(m_grid, m_iconA, m_labelA, m_colorA));
         }
         else
         {
-            m_listOrganisms.push_back(Organism(m_grid, m_iconB, m_labelB));
+            m_listOrganisms.push_back(Organism(m_grid, m_iconB, m_labelB, m_colorB));
         }
 
     }
@@ -51,11 +51,11 @@ void Immigration::createFixGerme()
         Y = 1 + rand() %  (m_grid->getHeight() - 2);
         if(X < m_grid->getWidth()*m_startingRatio/100)
         {
-            m_listOrganisms.push_back(Organism(X,Y,m_grid, m_iconA, m_labelA));
+            m_listOrganisms.push_back(Organism(X,Y,m_grid, m_iconA, m_labelA, m_colorA));
         }
         else
         {
-            m_listOrganisms.push_back(Organism(X,Y,m_grid, m_iconB, m_labelB));
+            m_listOrganisms.push_back(Organism(X,Y,m_grid, m_iconB, m_labelB, m_colorB));
         }
 
     }
@@ -82,7 +82,7 @@ void Immigration::runOneStepImmi()
                     if(m_grid->getOrganismAt(i, j))
                     {
                         //en cas de survie la cellule reste du même type
-                        newListOrganisms.push_back(Organism(i,j,m_grid, m_grid->getOrganismAt(i, j)->getIcon(), m_grid->getOrganismAt(i, j)->getLabel()));
+                        newListOrganisms.push_back(Organism(i,j,m_grid, m_grid->getOrganismAt(i, j)->getIcon(), m_grid->getOrganismAt(i, j)->getLabel(), m_grid->getOrganismAt(i, j)->getColor()));
                     }
                 }
             }
@@ -94,9 +94,9 @@ void Immigration::runOneStepImmi()
                     //en cas de naissance la cellule sera du type majoritaire dans son voisinnage
                     if(m_grid->countNeighboorType(i,j,m_labelA) > m_grid->countNeighboorType(i,j,m_labelB))
                     {
-                       newListOrganisms.push_back(Organism(i,j,m_grid, m_iconA, m_labelA));
+                       newListOrganisms.push_back(Organism(i,j,m_grid, m_iconA, m_labelA, m_colorA));
                     } else {
-                        newListOrganisms.push_back(Organism(i,j,m_grid, m_iconB, m_labelB));
+                        newListOrganisms.push_back(Organism(i,j,m_grid, m_iconB, m_labelB, m_colorB));
                     }
                 }
             }
@@ -127,7 +127,7 @@ void Immigration::runSimuImmi(bool stepByStep)
         }
         else
         {
-            _sleep(80);
+            _sleep(200);
         }
         system("cls");
         this->displaySimu();

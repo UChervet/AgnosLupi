@@ -6,7 +6,6 @@
 #include "GameOlife.h"
 #include <time.h>
 #include <string>
-#include <windows.h>
 #include <stdio.h>
 #include "Immigration.h"
 
@@ -16,6 +15,8 @@
 */
 
 using namespace std;
+
+
 
 void pbDaf()
 {
@@ -67,8 +68,6 @@ void pbDaf()
     world = 0;
 
 }
-
-
 
 int main()
 {

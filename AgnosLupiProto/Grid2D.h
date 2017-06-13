@@ -44,4 +44,6 @@ protected :
 				// getOrganismAt() will handle doind 2d calculations
 };
 
+void color(int t,int f);
+
 #endif // GRID2D_H_INCLUDED
