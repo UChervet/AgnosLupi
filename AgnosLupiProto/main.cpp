@@ -2,13 +2,15 @@
 #include <cstdlib>
 #include <stdlib.h>
 #include "Grid2D.h"
-#include "Organism.h"
-#include "GameOlife.h"
+//#include "Organism.h"
+//#include "GameOlife.h"
 #include <time.h>
 #include <string>
 #include <stdio.h>
-#include "Immigration.h"
+//#include "Immigration.h"
 #include "FireForest.h"
+#include "curses.h"
+#include "panel.h"
 
 /*
 *   Version Git de AgnusLupi
@@ -72,26 +74,46 @@ void pbDaf()
 
 int main()
 {
-    srand(time(NULL)); // initialisation de rand
-    int h = 100;
-    int w = 50;
-    int tauxGerme = 50;
-    int nbStep = 10000;
-    int ratioPop = 40;
+    //init
+    initscr();			/* Start curses mode 		  */
+    keypad(stdscr, true); /*enable the use of all the keyboard */
+    //raw(); /*disable line buffering*/
+    noecho();
 
-    FireForest* simulation = new FireForest(w,h,nbStep,80,40);
+    srand(time(NULL)); // initialisation de rand
+    int h = 50;
+    int w = 50;
+    int nbStep = 10000;
+
+    FireForest* simulation = new FireForest(w,h,nbStep,100,40);
     simulation->init();
 
-    simulation->displaySimu();
-    char tempo;
-    scanf("%c",&tempo);
-    simulation->runSimu();
+    simulation->runPrettySimu();
+
+
+
+
+    refresh();			/* Print it on to the real screen */
+    getch();			/* Wait for user input */
+    endwin();			/* End curses mode		  */
+
 
     return 0;
 }
 
 
-
+//    srand(time(NULL)); // initialisation de rand
+//    int h = 100;
+//    int w = 50;
+//    int nbStep = 10000;
+//
+//    FireForest* simulation = new FireForest(w,h,nbStep,80,40);
+//    simulation->init();
+//
+//    simulation->displaySimu();
+//    char tempo;
+//    scanf("%c",&tempo);
+//    simulation->runSimu();
 
 
 //int main()

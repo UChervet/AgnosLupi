@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
+#include "curses.h"
+#include "panel.h"
 
 using namespace std;
 
@@ -38,6 +40,11 @@ void Simulation::displaySimu()
     m_grid->displayGrid();
 }
 
+void Simulation::prettyDisplay()
+{
+    m_grid->prettyDisplayGrid();
+}
+
 void Simulation::runOneStep()
 {}
 
@@ -59,5 +66,24 @@ void Simulation::runSimu(bool stepByStep)
         system("cls");
         this->displaySimu();
         cout<<"Step simulation : " << i << endl;
+    }
+}
+
+void Simulation::runPrettySimu(bool stepByStep)
+{
+    for(int i = 0; i < m_nbStemSimu; i++)
+    {
+        this->runOneStep();
+        if(stepByStep)
+        {
+            getch();
+        }
+        else
+        {
+            _sleep(80);
+        }
+        clear();
+        this->prettyDisplay();
+        //cout<<"Step simulation : " << i << endl;
     }
 }

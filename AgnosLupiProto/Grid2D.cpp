@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <vector>
+#include "curses.h"
+#include "panel.h"
 
 using namespace std;
 
@@ -307,13 +309,16 @@ void Grid2D::prettyDisplayGrid()
             if(!getOrganismAt(i,j))
             {
                 //si case vide
-                cout<<" "; //"."
+                mvaddch(j, i,' ');
             }
             else
             {
                 //si case occupee
                 color(getOrganismAt(i,j)->getColor(),0);
-                cout << getOrganismAt(i,j)->getIcon();
+                //init_pair(1, 10, COLOR_BLACK);
+                //mvaddch(j, i, getOrganismAt(i,j)->getIcon());
+                move(j,i);                                  /* ATTENTION move(row,col);  le x et le y sont inversé dans curse*/
+                addch(getOrganismAt(i,j)->getIcon() );
             }
         }
         cout<<endl;

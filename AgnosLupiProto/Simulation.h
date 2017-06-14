@@ -16,7 +16,9 @@ public:
 
     void clearGrid();
     void displaySimu();
+    void prettyDisplay();
     void runSimu(bool stepByStep = false);
+    void runPrettySimu(bool stepByStep = false);
 
 
 protected:
