@@ -28,7 +28,8 @@ void FireForest::createForest()
     {
         for(int j = 1; j < m_grid->getHeight()-1; j++)
         {
-            m_listOrganisms.push_back(Organism(i,j,m_grid, m_arbreChar, m_arbreLb, m_arbreColor));
+            if(rand() % 100 < m_densite)
+                m_listOrganisms.push_back(Organism(i,j,m_grid, m_arbreChar, m_arbreLb, m_arbreColor));
         }
     }
     for(int i = 0; i < m_listOrganisms.size(); i++)
@@ -53,26 +54,30 @@ void FireForest::runOneStep()
     {
         for(int j = 1; j < m_hGrid-1; j++)
         {
-            if(m_grid->getOrganismAt(i,j)->getIcon() == m_feuChar)
+            if(m_grid->getOrganismAt(i,j))
             {
-                //s'eteint
-                newListOrganisms.push_back(Organism(i,j,m_grid, m_cendreChar, m_cendreLb, m_cendreColor));
-            }
-            else if(m_grid->countNeighboorType(i,j, m_feuLb) != 0 && m_grid->getOrganismAt(i,j)->getIcon() != m_cendreChar)
-            {
-                if(rand() % 100 < m_probaPropa)
+
+                if(m_grid->getOrganismAt(i,j)->getIcon() == m_feuChar)
                 {
-                    //brûle
-                    newListOrganisms.push_back(Organism(i,j,m_grid, m_feuChar, m_feuLb, m_feuColor));
+                    //s'eteint
+                    newListOrganisms.push_back(Organism(i,j,m_grid, m_cendreChar, m_cendreLb, m_cendreColor));
+                }
+                else if(m_grid->countNeighboorType(i,j, m_feuLb) != 0 && m_grid->getOrganismAt(i,j)->getIcon() != m_cendreChar)
+                {
+                    if(rand() % 100 < m_probaPropa)
+                    {
+                        //brûle
+                        newListOrganisms.push_back(Organism(i,j,m_grid, m_feuChar, m_feuLb, m_feuColor));
+                    }
+                    else
+                    {
+                        newListOrganisms.push_back(Organism(i,j,m_grid, m_grid->getOrganismAt(i,j)->getIcon(), m_grid->getOrganismAt(i,j)->getLabel(), m_grid->getOrganismAt(i,j)->getColor() ));
+                    }
                 }
                 else
                 {
                     newListOrganisms.push_back(Organism(i,j,m_grid, m_grid->getOrganismAt(i,j)->getIcon(), m_grid->getOrganismAt(i,j)->getLabel(), m_grid->getOrganismAt(i,j)->getColor() ));
                 }
-            }
-            else
-            {
-                newListOrganisms.push_back(Organism(i,j,m_grid, m_grid->getOrganismAt(i,j)->getIcon(), m_grid->getOrganismAt(i,j)->getLabel(), m_grid->getOrganismAt(i,j)->getColor() ));
             }
         }
     }

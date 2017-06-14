@@ -73,13 +73,13 @@ void pbDaf()
 int main()
 {
     srand(time(NULL)); // initialisation de rand
-    int h = 50;
+    int h = 100;
     int w = 50;
     int tauxGerme = 50;
     int nbStep = 10000;
     int ratioPop = 40;
 
-    FireForest* simulation = new FireForest(w,h,nbStep,100,40);
+    FireForest* simulation = new FireForest(w,h,nbStep,80,40);
     simulation->init();
 
     simulation->displaySimu();

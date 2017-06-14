@@ -64,7 +64,7 @@
 	<string>
 	<vector>
 
-1497357876 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.cpp
+1497368747 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.cpp
 	"Grid2D.h"
 	"Organism.h"
 	<iostream>
@@ -74,14 +74,14 @@
 	<windows.h>
 	<vector>
 
-1497346061 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.h
+1497368752 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\grid2d.h
 	"Organism.h"
 	<vector>
 
 1497346900 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\organism.h
 	<string>
 
-1497366812 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
+1497367599 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\main.cpp
 	<iostream>
 	<cstdlib>
 	<stdlib.h>
@@ -131,18 +131,18 @@
 	<string>
 	<vector>
 
-1497360226 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\simulation.h
+1497427110 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\simulation.h
 	"Organism.h"
 	"Grid2D.h"
 	<vector>
 
-1497366570 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\simulation.cpp
+1497368762 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\simulation.cpp
 	"Simulation.h"
 	<stdlib.h>
 	<iostream>
 	<stdio.h>
 
-1497366001 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\fireforest.cpp
+1497367166 source:c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\fireforest.cpp
 	"FireForest.h"
 	"Organism.h"
 	"Grid2D.h"
@@ -150,8 +150,14 @@
 	<stdio.h>
 	"string.h"
 
-1497365276 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\fireforest.h
+1497427144 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\fireforest.h
 	"Simulation.h"
 	"Organism.h"
 	"Grid2D.h"
+
+1497426552 c:\users\uchervet\sources\agnoslupi\agnoslupi\agnoslupiproto\include\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
 

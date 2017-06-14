@@ -15,6 +15,7 @@ public:
     void createForest();
     void startFire();
 
+
 protected:
     int m_densite;
     double m_probaPropa;

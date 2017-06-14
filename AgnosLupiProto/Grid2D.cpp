@@ -147,6 +147,7 @@ void Grid2D::displayGrid()
 }
 
 
+
 /**
 * Renvoit le nombre de case occupée au voisinage de la case (X,Y)
 * Si countDiag = false compte seulement sur 4-directions
