@@ -1,16 +1,16 @@
 #include <iostream>
 #include <cstdlib>
-#include <stdlib.h>
-#include "Grid2D.h"
-//#include "Organism.h"
-//#include "GameOlife.h"
-#include <time.h>
+#include <stdlib.h>         /* srand, rand */
+#include <time.h>         /* time, init rand */
 #include <string>
 #include <stdio.h>
+#include "Grid2D.h"
+#include "Organism.h"
+#include "GameOlife.h"
 //#include "Immigration.h"
 #include "FireForest.h"
 #include "curses.h"
-#include "panel.h"
+//#include "panel.h"
 
 /*
 *   Version Git de AgnusLupi
@@ -75,8 +75,9 @@ void pbDaf()
 int main()
 {
     //init
-    initscr();			/* Start curses mode 		  */
-    keypad(stdscr, true); /*enable the use of all the keyboard */
+    initscr();			//Start curses mode
+    keypad(stdscr, true); //enable the use of all the keyboard
+    curs_set(0);    //hide the cursor
     //raw(); /*disable line buffering*/
     noecho();
 
@@ -85,13 +86,15 @@ int main()
     int w = 50;
     int nbStep = 10000;
 
-    FireForest* simulation = new FireForest(w,h,nbStep,100,40);
+//    GameOlife* simulation = new GameOlife(w,h,40,nbStep);
+//    simulation->init();
+//    simulation->setCreationRules("36");
+//    simulation->setSurvieRules("23");
+
+    FireForest* simulation = new FireForest(w,h,nbStep,80,60);
     simulation->init();
 
     simulation->runPrettySimu();
-
-
-
 
     refresh();			/* Print it on to the real screen */
     getch();			/* Wait for user input */

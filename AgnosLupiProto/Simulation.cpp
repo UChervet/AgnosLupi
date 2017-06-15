@@ -82,7 +82,6 @@ void Simulation::runPrettySimu(bool stepByStep)
         {
             _sleep(80);
         }
-        clear();
         this->prettyDisplay();
         //cout<<"Step simulation : " << i << endl;
     }

@@ -7,7 +7,7 @@
 #include <windows.h>
 #include <vector>
 #include "curses.h"
-#include "panel.h"
+//#include "panel.h"
 
 using namespace std;
 
@@ -302,27 +302,23 @@ void Grid2D::getListOrganisms(std::vector <Organism *> &listOrganisms)
 */
 void Grid2D::prettyDisplayGrid()
 {
+    wclear(stdscr);
     for(int i=0; i < m_width; i++)
     {
         for(int j=0; j < m_height; j++)
         {
-            if(!getOrganismAt(i,j))
-            {
-                //si case vide
-                mvaddch(j, i,' ');
-            }
-            else
+            if(getOrganismAt(i,j))
             {
                 //si case occupee
-                color(getOrganismAt(i,j)->getColor(),0);
+                //color(getOrganismAt(i,j)->getColor(),0);
                 //init_pair(1, 10, COLOR_BLACK);
                 //mvaddch(j, i, getOrganismAt(i,j)->getIcon());
-                move(j,i);                                  /* ATTENTION move(row,col);  le x et le y sont inversé dans curse*/
-                addch(getOrganismAt(i,j)->getIcon() );
+                //move(j,i);                                  /* ATTENTION move(row,col);  le x et le y sont inversé dans curse*/
+                mvwaddch(stdscr, j, i, getOrganismAt(i,j)->getIcon() );
             }
         }
-        cout<<endl;
     }
+    wrefresh(stdscr);
 }
 
 
