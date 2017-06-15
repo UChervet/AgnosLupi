@@ -27,9 +27,10 @@ void FireForest::init()
 void FireForest::initColor()
 {
     standend();
+    init_color(8, 150, 150, 150);
     init_pair(3, COLOR_YELLOW, COLOR_RED);  //fire
     init_pair(2, COLOR_GREEN, COLOR_BLACK);  //tree
-    init_pair(4, COLOR_MAGENTA, COLOR_BLACK);  //cendre
+    init_pair(4, 8, COLOR_BLACK);  //cendre
     init_pair(1, COLOR_WHITE, COLOR_BLACK);  //default
 
 }

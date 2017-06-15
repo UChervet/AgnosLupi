@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
+#include <string>
 #include "curses.h"
 #include "panel.h"
 
@@ -83,6 +84,9 @@ void Simulation::runPrettySimu(bool stepByStep) //ajouter les arrêts reset F1 pl
             _sleep(80);
         }
         this->prettyDisplay();
-        //cout<<"Step simulation : " << i << endl; a placer correctement
+        mvwprintw(stdscr, LINES - 3, 0, "Number of steps : %d",i+1);
+        mvwprintw(stdscr, LINES - 2, 0, "Size of the grid : w = %d and h = %d",m_grid->getWidth(),m_grid->getHeight());
+        wrefresh(stdscr);
+
     }
 }

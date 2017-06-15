@@ -611,6 +611,15 @@ bits), 8 bits for other attributes, and 16 bits for character data.
 #define COLOR_YELLOW  (COLOR_RED | COLOR_GREEN)
 
 #define COLOR_WHITE   7
+#define COLOR_CUSTOM1   8
+#define COLOR_CUSTOM2   9
+#define COLOR_CUSTOM3   10
+#define COLOR_CUSTOM4   11
+#define COLOR_CUSTOM5   12
+#define COLOR_CUSTOM6   13
+#define COLOR_CUSTOM7   14
+#define COLOR_CUSTOM8   15
+#define COLOR_CUSTOM9   16
 
 /*----------------------------------------------------------------------
  *
