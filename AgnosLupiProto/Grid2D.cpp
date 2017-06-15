@@ -280,18 +280,18 @@ void Grid2D::getListOrganisms(std::vector <Organism *> &listOrganisms)
     listOrganisms.clear();
 
     for(int x = 0; x < m_width; x++)
+    {
+        for(int y = 0; y < m_height; y++)
         {
-            for(int y = 0; y < m_height; y++)
+            if(getOrganismAt(x, y) != 0)
             {
-                if(getOrganismAt(x, y) != 0)
+                if(getOrganismAt(x, y)->getLabel() != "obstacle")
                 {
-                    if(getOrganismAt(x, y)->getLabel() != "obstacle")
-                    {
-                        listOrganisms.push_back(getOrganismAt(x, y));
-                    }
+                    listOrganisms.push_back(getOrganismAt(x, y));
                 }
             }
         }
+    }
 }
 
 
@@ -303,18 +303,16 @@ void Grid2D::getListOrganisms(std::vector <Organism *> &listOrganisms)
 void Grid2D::prettyDisplayGrid()
 {
     wclear(stdscr);
+    //standend();
     for(int i=0; i < m_width; i++)
     {
         for(int j=0; j < m_height; j++)
         {
-            if(getOrganismAt(i,j))
+            if(getOrganismAt(i,j)) //si case occupee
             {
-                //si case occupee
-                //color(getOrganismAt(i,j)->getColor(),0);
-                //init_pair(1, 10, COLOR_BLACK);
-                //mvaddch(j, i, getOrganismAt(i,j)->getIcon());
-                //move(j,i);                                  /* ATTENTION move(row,col);  le x et le y sont inversé dans curse*/
-                mvwaddch(stdscr, j, i, getOrganismAt(i,j)->getIcon() );
+                attron(COLOR_PAIR(getOrganismAt(i,j)->getColor()));
+                mvwaddch(stdscr, j, i, getOrganismAt(i,j)->getIcon() ); /* ATTENTION move(row,col);  le x et le y sont inversé dans curses*/
+                attroff(COLOR_PAIR(getOrganismAt(i,j)->getColor()));
             }
         }
     }
@@ -329,6 +327,6 @@ void Grid2D::prettyDisplayGrid()
 */
 void color(int t,int f)
 {
-        HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
-            SetConsoleTextAttribute(H,f*16+t);
+    HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(H,f*16+t);
 }

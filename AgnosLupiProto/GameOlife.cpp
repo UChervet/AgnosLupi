@@ -20,7 +20,7 @@ void GameOlife::createGermeAlea()
     int nbCellStart = (m_hGrid*m_wGrid*m_tauxGerme)/100;
     for(int i = 0; i < nbCellStart; i++)
     {
-        m_listOrganisms.push_back(Organism(m_grid, 'X', "unlabelled"));
+        m_listOrganisms.push_back(Organism(m_grid, m_iconCell, "unlabelled"));
     }
     for(int i = 0; i < m_listOrganisms.size(); i++)
     {
@@ -35,7 +35,7 @@ void GameOlife::createDroplet(int taille, int center[])
         for(int j = 0; j < taille; j++)
         {
             if(rand() % 100 < m_tauxGerme)
-                m_listOrganisms.push_back(Organism(center[0]-taille/2+i+j, center[1]-taille/2+i-j,m_grid, 'X', "unlabelled"));
+                m_listOrganisms.push_back(Organism(center[0]-taille/2+i+j, center[1]-taille/2+i-j,m_grid, m_iconCell, "unlabelled"));
         }
     }
 
@@ -65,6 +65,7 @@ void GameOlife::init()
     m_border = new Organism(0, 0, m_grid);
     m_border->setLabel("obstacle");
     m_border->setIcon('@');
+    m_border->setColor(10);
     m_grid->setBorders(m_border);
 
     if (m_fixedConfig)
@@ -162,7 +163,7 @@ void GameOlife::runOneStep()
                 if(m_grid->countNeighboorType(i,j,"all") == m_survieRule[indexS])  //utiliser des conversions binaire et un masque pour la suite
                 {
                     if(m_grid->getOrganismAt(i, j))
-                        newListOrganisms.push_back(Organism(i,j,m_grid, 'X', "unlabelled"));
+                        newListOrganisms.push_back(Organism(i,j,m_grid, m_iconCell, "unlabelled"));
                 }
             }
             //reproduction
@@ -170,7 +171,7 @@ void GameOlife::runOneStep()
             {
                 if(m_grid->countNeighboorType(i,j,"all") == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
                 {
-                    newListOrganisms.push_back(Organism(i,j,m_grid, 'X', "unlabelled"));
+                    newListOrganisms.push_back(Organism(i,j,m_grid, m_iconCell, "unlabelled"));
                 }
             }
         }

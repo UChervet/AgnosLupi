@@ -20,18 +20,18 @@ Organism::Organism(int x, int y, Grid2D * grid, int color) : m_X(x), m_Y(y), m_g
     m_icon = '¿'; //default unknown icon
 }
 
-Organism::Organism(int x, int y, Grid2D * grid, char ic, int color) : m_X(x), m_Y(y), m_grid(grid), m_icon(ic), m_color(color)
+Organism::Organism(int x, int y, Grid2D * grid, chtype ic, int color) : m_X(x), m_Y(y), m_grid(grid), m_icon(ic), m_color(color)
 {
     m_label = "unlabelled"; //default unknown label
 }
 
-Organism::Organism(int x, int y, Grid2D * grid, char ic, string label, int color) : m_X(x), m_Y(y), m_grid(grid), m_icon(ic), m_color(color)
+Organism::Organism(int x, int y, Grid2D * grid, chtype ic, string label, int color) : m_X(x), m_Y(y), m_grid(grid), m_icon(ic), m_color(color)
 {
     m_label = label; //default unknown label
 }
 
 //placement aléatoire
-Organism::Organism(Grid2D * grid, char ic, string label, int color) : m_grid(grid), m_icon(ic), m_label(label), m_color(color)
+Organism::Organism(Grid2D * grid, chtype ic, string label, int color) : m_grid(grid), m_icon(ic), m_label(label), m_color(color)
 {
     bool isPlaced = false;
     while(!isPlaced)
@@ -87,12 +87,12 @@ void Organism::setColor(int color)
         m_color = color;
 }
 
-char Organism::getIcon()
+chtype Organism::getIcon()
 {
     return m_icon;
 }
 
-void Organism::setIcon(char icon)
+void Organism::setIcon(chtype icon)
 {
     m_icon = icon;
 }

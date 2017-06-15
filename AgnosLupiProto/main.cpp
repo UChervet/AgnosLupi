@@ -7,7 +7,7 @@
 #include "Grid2D.h"
 #include "Organism.h"
 #include "GameOlife.h"
-//#include "Immigration.h"
+#include "Immigration.h"
 #include "FireForest.h"
 #include "curses.h"
 //#include "panel.h"
@@ -76,22 +76,29 @@ int main()
 {
     //init
     initscr();			//Start curses mode
+    start_color();     //Start the curses color mode
     keypad(stdscr, true); //enable the use of all the keyboard
     curs_set(0);    //hide the cursor
-    //raw(); /*disable line buffering*/
+    raw(); /*disable line buffering*/
     noecho();
 
     srand(time(NULL)); // initialisation de rand
-    int h = 50;
-    int w = 50;
+
+    int ch;
+    int h =  LINES - 3;
+    int w = COLS -1;
     int nbStep = 10000;
 
-//    GameOlife* simulation = new GameOlife(w,h,40,nbStep);
+//    Immigration* simulation = new Immigration(w,h,20,nbStep,50);
+//    //GameOlife* simulation = new GameOlife(w,h,40,nbStep);
+//    //simulation->setConfig(true);
 //    simulation->init();
+//    simulation->createFixGerme();
+//    //simulation->createGermeAlea();
 //    simulation->setCreationRules("36");
 //    simulation->setSurvieRules("23");
 
-    FireForest* simulation = new FireForest(w,h,nbStep,80,60);
+    FireForest* simulation = new FireForest(w,h,nbStep,60,60);
     simulation->init();
 
     simulation->runPrettySimu();

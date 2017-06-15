@@ -16,7 +16,18 @@ void Immigration::init()
     m_border = new Organism(0, 0, m_grid);
     m_border->setLabel("obstacle");
     m_border->setIcon('@');
+    m_border->setColor(1);
     m_grid->setBorders(m_border);
+
+    initColor();
+}
+
+void Immigration::initColor()
+{
+    standend();
+    attrset(A_BOLD);
+    init_pair(m_colorA, COLOR_CYAN, COLOR_BLACK);  //typeA
+    init_pair(m_colorB, COLOR_MAGENTA, COLOR_BLACK);  //typeB
 }
 
 void Immigration::createGermeAlea()

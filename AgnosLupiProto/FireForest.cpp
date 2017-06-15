@@ -16,10 +16,22 @@ void FireForest::init()
     m_border = new Organism(0, 0, m_grid);
     m_border->setLabel("obstacle");
     m_border->setIcon('@');
+    m_border->setColor(1);
     m_grid->setBorders(m_border);
 
+    initColor();
     createForest();
     startFire();
+}
+
+void FireForest::initColor()
+{
+    standend();
+    init_pair(3, COLOR_YELLOW, COLOR_RED);  //fire
+    init_pair(2, COLOR_GREEN, COLOR_BLACK);  //tree
+    init_pair(4, COLOR_MAGENTA, COLOR_BLACK);  //cendre
+    init_pair(1, COLOR_WHITE, COLOR_BLACK);  //default
+
 }
 
 void FireForest::createForest()

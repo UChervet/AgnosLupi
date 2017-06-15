@@ -22,6 +22,7 @@ public :
 
 protected :
     int m_tauxGerme;
+    chtype m_iconCell = ACS_LANTERN;
 
     bool m_fixedConfig = false;
     std::vector <int>  m_survieRule;

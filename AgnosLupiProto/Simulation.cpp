@@ -69,7 +69,7 @@ void Simulation::runSimu(bool stepByStep)
     }
 }
 
-void Simulation::runPrettySimu(bool stepByStep)
+void Simulation::runPrettySimu(bool stepByStep) //ajouter les arrêts reset F1 play pause F2 reset (clear init) double F1 end
 {
     for(int i = 0; i < m_nbStemSimu; i++)
     {
@@ -83,6 +83,6 @@ void Simulation::runPrettySimu(bool stepByStep)
             _sleep(80);
         }
         this->prettyDisplay();
-        //cout<<"Step simulation : " << i << endl;
+        //cout<<"Step simulation : " << i << endl; a placer correctement
     }
 }
