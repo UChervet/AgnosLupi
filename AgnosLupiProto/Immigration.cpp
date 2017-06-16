@@ -13,6 +13,7 @@ Immigration::Immigration(int w, int h, int tauxGerme, int nbStep, int startingRa
 
 void Immigration::init()
 {
+    m_simuName = "Game of Life, immigration.";
     m_border = new Organism(0, 0, m_grid);
     m_border->setLabel("obstacle");
     m_border->setIcon('@');
@@ -27,7 +28,7 @@ void Immigration::initColor()
     standend();
     attrset(A_BOLD);
     init_pair(m_colorA, COLOR_CYAN, COLOR_BLACK);  //typeA
-    init_pair(m_colorB, COLOR_MAGENTA, COLOR_BLACK);  //typeB
+    init_pair(m_colorB, COLOR_RED, COLOR_BLACK);  //typeB
 }
 
 void Immigration::createGermeAlea()

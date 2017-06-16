@@ -13,6 +13,8 @@ FireForest::FireForest(int w, int h, int nbStep, int densite, int probaPropa) : 
 
 void FireForest::init()
 {
+    m_simuName = "Save the damned trees";
+
     m_border = new Organism(0, 0, m_grid);
     m_border->setLabel("obstacle");
     m_border->setIcon('@');

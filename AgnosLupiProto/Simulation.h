@@ -12,13 +12,16 @@ public:
     Simulation();
     Simulation(int w, int h, int nbStep);
 
-    void init();
+    std::string getSimuName();
+
+    virtual void init() = 0;
 
     void clearGrid();
     void displaySimu();
     void prettyDisplay();
     void runSimu(bool stepByStep = false);
     void runPrettySimu(bool stepByStep = false);
+    void resetSimu(bool stepByStep = false);
 
 
 protected:
@@ -27,6 +30,7 @@ protected:
     Organism* m_border;
     std::vector <Organism> m_listOrganisms;
     int m_nbStemSimu;
+    std::string m_simuName;
 
     virtual void runOneStep() = 0;
 

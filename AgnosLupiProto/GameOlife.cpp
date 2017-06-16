@@ -62,6 +62,7 @@ void GameOlife::createFixGerme()
 
 void GameOlife::init()
 {
+    m_simuName = "Game Of Life.";
     m_border = new Organism(0, 0, m_grid);
     m_border->setLabel("obstacle");
     m_border->setIcon('@');
