@@ -78,7 +78,7 @@ void Grid2D::addRectangleObst(Organism * obstacle, int x1, int y1, int x2, int y
 */
 Organism* Grid2D::getOrganismAt( int x, int y)
 {
-    return m_organisms [ m_height * x + y ];
+    return m_organisms[ m_height * (x % m_width) + (y % m_height)]; //[ m_height * x + y ];
 }
 
 
@@ -117,7 +117,8 @@ void Grid2D::clearGrid()
     {
         for(int j = 0; j <m_height; j++)
         {
-            supprOrganism(i,j);
+            if(getOrganismAt(i,j))
+                removeOrganism(i,j);   //supprOrganism(i,j); le suppr plante mais avec juste le remove je dois avoir des fuites mémoires
         }
     }
 }

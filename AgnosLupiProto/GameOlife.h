@@ -11,7 +11,7 @@ class GameOlife : public Simulation
 {
 public :
     GameOlife();
-    GameOlife(int w, int h, int tauxGerme, int nbStep);
+    GameOlife(int w, int h, int tauxGerme, int nbStep, bool config = false);
 
     void init();
     void setConfig(bool config = false);

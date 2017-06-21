@@ -7,6 +7,7 @@
 #include "curses.h"         /* better console */
 //#include "panel.h"
 
+/**< custom files */
 #include "Grid2D.h"
 #include "Organism.h"
 #include "GameOlife.h"
@@ -43,92 +44,22 @@ int main()
     int w = COLS -1;
     int nbStep = 10000;
 
-//    Immigration* simulation = new Immigration(w,h,20,nbStep,50);
-////    GameOlife* simulation = new GameOlife(w,h,40,nbStep);
-////    simulation->setConfig(true);
-//    simulation->init();
-//    //simulation->createFixGerme();
-//    simulation->createGermeAlea();
-//    simulation->setCreationRules("36");
-//    simulation->setSurvieRules("23");
+//    FireForest* simulation = new FireForest(w,h,nbStep,80,40);
+    Immigration* simulation = new Immigration(w,h,10,nbStep,50);
+    //GameOlife* simulation = new GameOlife(w,h,40,nbStep);
+    simulation->setCreationRules("3");
+    simulation->setSurvieRules("12345");
 
-    FireForest* simulation = new FireForest(w,h,nbStep,60,60);
     simulation->init();
-
     simulation->runPrettySimu();
 
 
-    //refresh();			/* Print it on to the real screen */
-    //getch();			/* Wait for user input */
     endwin();			/* End curses mode		  */
-
-
     return 0;
 }
 
 
-//    srand(time(NULL)); // initialisation de rand
-//    int h = 100;
-//    int w = 50;
-//    int nbStep = 10000;
-//
-//    FireForest* simulation = new FireForest(w,h,nbStep,80,40);
-//    simulation->init();
-//
-//    simulation->displaySimu();
-//    char tempo;
-//    scanf("%c",&tempo);
-//    simulation->runSimu();
 
-
-//int main()
-//{
-//    srand(time(NULL)); // initialisation de rand
-//    int h = 50;
-//    int w = 50;
-//    int tauxGerme = 80;
-//    int nbStep = 10000;
-//
-//    GameOlife* simulation = new GameOlife(h, w, tauxGerme, nbStep);
-//    simulation->setConfig(true);
-//    simulation->init();
-//
-////    //jeu de la vie
-////    simulation->setSurvieRules("23");
-////    simulation->setCreationRules("3");
-//
-//    //highlife
-////    simulation->setSurvieRules("23");
-////    simulation->setCreationRules("36");
-//
-//    //diamoeba
-////    simulation->setSurvieRules("5678");
-////    simulation->setCreationRules("35678");
-//
-//    //amoeba
-////    simulation->setSurvieRules("1358");
-////    simulation->setCreationRules("357");
-//
-//    //labyrinth
-////    simulation->setSurvieRules("12345");
-////    simulation->setCreationRules("3");
-//
-//    //day&night
-////    simulation->setSurvieRules("345678");
-////    simulation->setCreationRules("3678");
-//
-//    //life 3-4
-//    simulation->setSurvieRules("34");
-//    simulation->setCreationRules("34");
-//
-//
-//    simulation->displaySimu();
-//    char tempo;
-//    scanf("%c",&tempo);
-//    simulation->runSimu();
-//
-//    return 0;
-//}
 
 void pbDaf()
 {

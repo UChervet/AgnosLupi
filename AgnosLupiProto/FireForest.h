@@ -13,12 +13,13 @@ public:
     FireForest(int w, int h, int nbStep, int densite, int probaPropa);
 
     void init();
-    void initColor();
-    void createForest();
-    void startFire();
+
 
 
 protected:
+    void initColor();
+    void createForest();
+    void startFire();
     int m_densite;
     double m_probaPropa;
 

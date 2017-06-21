@@ -21,11 +21,10 @@ public:
     void prettyDisplay();
     void runSimu(bool stepByStep = false);
     void runPrettySimu(bool stepByStep = false);
-    void resetSimu(bool stepByStep = false);
-
 
 protected:
     int m_wGrid, m_hGrid; //dimension grille de simulation
+    void resetSimu(bool stepByStep = false);
     Grid2D * m_grid;
     Organism* m_border;
     std::vector <Organism> m_listOrganisms;
@@ -33,7 +32,6 @@ protected:
     std::string m_simuName;
 
     virtual void runOneStep() = 0;
-
 };
 
 #endif // SIMULATION_H_INCLUDED

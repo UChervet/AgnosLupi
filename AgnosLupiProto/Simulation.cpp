@@ -34,6 +34,9 @@ void Simulation::clearGrid()
 {
     m_grid->clearGrid();
 
+    while(!m_listOrganisms.empty())
+        m_listOrganisms.pop_back();
+
     //remettre les bordures
     m_border = new Organism(0, 0, m_grid);
     m_border->setLabel("obstacle");
@@ -77,7 +80,7 @@ void Simulation::runSimu(bool stepByStep)
 void Simulation::runPrettySimu(bool stepByStep) //ajouter les arrêts reset F1 play pause F2 reset (clear init) double F1 end
 {
     bool pause = false;
-    int interrup; //will get the value of pressed keyboard keys
+    int interrup = 0; //will get the value of pressed keyboard keys
 
     for(int i = 0; i < m_nbStemSimu; i++)
     {
@@ -111,12 +114,21 @@ void Simulation::runPrettySimu(bool stepByStep) //ajouter les arrêts reset F1 pl
             wrefresh(stdscr);
             timeout(-1); //désactive le timeout pour rendre le getch bloquant
             interrup = getch();
-            //switch-case for later
+            /// TODO switch-case
             if(interrup == KEY_F(1))
                 pause = !pause;
 
+            if(interrup == KEY_F(2))
+            {
+                //termine la simu en cours et en lance une autre avec le reset
+                resetSimu(stepByStep);
+                return; //en réalité la fonction simu en cours s'arrêtera une fois sortie du resetSimu (évite le bug des F3)
+            }
+
             if(interrup == KEY_F(3)) //force quit depuis la pause
+            {
                 return;
+            }
         }
 
         if(interrup == KEY_F(3)) //force quit depuis le play

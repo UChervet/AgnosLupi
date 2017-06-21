@@ -8,12 +8,10 @@
 class Immigration : public GameOlife
 {
 public:
-    Immigration(int w, int h, int tauxGerme, int nbStep, int startingRatio);
+    Immigration(int w, int h, int tauxGerme, int nbStep, int startingRatio, bool config = false);
 
     void init();
-    void initColor();
-    void createGermeAlea();
-    void createFixGerme();
+
 
 protected:
     int m_startingRatio; //ratio between the two population from 0 to 100
@@ -25,6 +23,9 @@ protected:
     int m_colorB = 3;
 
     void runOneStep();
+    void initColor();
+    void createGermeAlea();
+    void createFixGerme();
 };
 
 #endif // IMMIGRATION_H_INCLUDED

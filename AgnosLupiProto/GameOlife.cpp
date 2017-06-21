@@ -11,8 +11,8 @@ using namespace std;
 GameOlife::GameOlife()
 { }
 
-GameOlife::GameOlife(int w, int h, int tauxGerme, int nbStep)
-    : Simulation(w,h,nbStep), m_tauxGerme(tauxGerme)
+GameOlife::GameOlife(int w, int h, int tauxGerme, int nbStep, bool config)
+    : Simulation(w,h,nbStep), m_tauxGerme(tauxGerme), m_fixedConfig(config)
 { }
 
 void GameOlife::createGermeAlea()
@@ -159,20 +159,23 @@ void GameOlife::runOneStep()
         for(int j = 1; j < m_hGrid-1; j++)
         {
             //survie
-            for(int indexS = 0; indexS < m_survieRule.size(); indexS++)
+            if(m_grid->getOrganismAt(i, j))
             {
-                if(m_grid->countNeighboorType(i,j,"all") == m_survieRule[indexS])  //utiliser des conversions binaire et un masque pour la suite
+                for(int indexS = 0; indexS < m_survieRule.size(); indexS++)
                 {
-                    if(m_grid->getOrganismAt(i, j))
+                    if(m_grid->countNeighboorType(i,j,"all") == m_survieRule[indexS])
                         newListOrganisms.push_back(Organism(i,j,m_grid, m_iconCell, "unlabelled"));
                 }
             }
             //reproduction
-            for(int indexR = 0; indexR < m_creationRule.size(); indexR++)
+            if(!m_grid->getOrganismAt(i, j))
             {
-                if(m_grid->countNeighboorType(i,j,"all") == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
+                for(int indexR = 0; indexR < m_creationRule.size(); indexR++)
                 {
-                    newListOrganisms.push_back(Organism(i,j,m_grid, m_iconCell, "unlabelled"));
+                    if(m_grid->countNeighboorType(i,j,"all") == m_creationRule[indexR])  //utiliser des conversions binaire et un masque pour la suite
+                    {
+                        newListOrganisms.push_back(Organism(i,j,m_grid, m_iconCell, "unlabelled"));
+                    }
                 }
             }
         }
